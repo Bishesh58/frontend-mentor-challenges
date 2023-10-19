@@ -5,30 +5,9 @@
         <span class="text-[#3E54A3]">Frontend Mentor</span> Challenge Projects
       </p>
       <div class="flex justify-center flex-wrap p-8 gap-6">
-        <NuxtLink to="/qrcode"
-          ><div class="w-[300px] h-[300px] border rounded-md flex flex-col">
-            <img
-              src="../public/img/qr_preview.png"
-              alt="qr_preview"
-              class="flex-1 w-full h-[60%] object-cover object-center"
-            />
-            <div class="p-4 text-center">
-              <p>QR Code Component</p>
-            </div>
-          </div>
-        </NuxtLink>
-        <NuxtLink to="/order-card" class="w-fit"
-          ><div class="w-[300px] h-[300px] border rounded-md flex flex-col">
-            <img
-              src="../public/img/order_preview.png"
-              alt="qr_preview"
-              class="flex-1 w-full h-[60%] object-cover object-center"
-            />
-            <div class="p-4 text-center">
-              <p>Order Summary Component</p>
-            </div>
-          </div>
-        </NuxtLink>
+        <div v-for="(item, i) in data" :key="i">
+          <LinkCard :data="item" />
+        </div>
       </div>
     </div>
     <div class="attribution">
@@ -40,7 +19,25 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const data = [
+  {
+    title: "QR Code Component",
+    imgURL: "/img/qr_preview.png",
+    link: "/qrcode",
+  },
+  {
+    title: "Order Summary Component",
+    imgURL: "/img/order_preview.png",
+    link: "/order-card",
+  },
+  {
+    title: "Result Summary Component",
+    imgURL: "/img/result_summary_preview.png",
+    link: "/result-summary",
+  },
+];
+</script>
 
 <style scoped>
 .attribution {

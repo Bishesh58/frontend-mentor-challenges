@@ -78,6 +78,10 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+useHead({
+  title: "Frontend Mentor | Result summary component",
+});
+</script>
 
 <style scoped></style>
