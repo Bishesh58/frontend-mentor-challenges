@@ -36,6 +36,11 @@ const data = [
     imgURL: "/img/result_summary_preview.png",
     link: "/result-summary",
   },
+  {
+    title: "NTF Card Component",
+    imgURL: "/img/ntf_card_preview.png",
+    link: "/ntf-card",
+  },
 ];
 </script>
 
