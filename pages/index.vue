@@ -22,6 +22,11 @@
 <script setup>
 const data = [
   {
+    title: "Interactive rating component",
+    imgURL: "/img/rating_preview.png",
+    link: "/rating",
+  },
+  {
     title: "NTF Card Component",
     imgURL: "/img/ntf_card_preview.png",
     link: "/ntf-card",
