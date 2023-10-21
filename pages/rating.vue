@@ -5,7 +5,7 @@
     <!-- rate component -->
     <div
       v-if="showRating"
-      class="w-[350px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-800 to-[#161b23] rounded-3xl p-8"
+      class="w-[325px] md:w-[412px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-800 to-[#161b23] rounded-3xl p-8"
     >
       <div
         class="w-12 h-12 rounded-full flex items-center justify-center bg-[#252D37] mb-8"
@@ -60,7 +60,7 @@
     <!-- thank you component -->
     <div
       v-else
-      class="w-[350px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-800 to-[#161b23] rounded-3xl p-8 text-center relative"
+      class="w-[325px] md:w-[412px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-800 to-[#161b23] rounded-3xl p-8 text-center relative"
     >
       <div class="text-[#7C8798] my-8">
         <img
@@ -82,7 +82,7 @@
         </p>
       </div>
       <div
-        class="absolute -bottom-12 left-32 text-white text-sm font-[300] border-b py-2 px-4 rounded-full"
+        class="absolute -bottom-12 left-32 md:left-40 text-white text-sm font-[300] border-b py-2 px-4 rounded-full"
       >
         <button @click="resetSelection">Rate again</button>
       </div>
