@@ -22,14 +22,9 @@
 <script setup>
 const data = [
   {
-    title: "QR Code Component",
-    imgURL: "/img/qr_preview.png",
-    link: "/qrcode",
-  },
-  {
-    title: "Order Summary Component",
-    imgURL: "/img/order_preview.png",
-    link: "/order-card",
+    title: "NTF Card Component",
+    imgURL: "/img/ntf_card_preview.png",
+    link: "/ntf-card",
   },
   {
     title: "Result Summary Component",
@@ -37,9 +32,14 @@ const data = [
     link: "/result-summary",
   },
   {
-    title: "NTF Card Component",
-    imgURL: "/img/ntf_card_preview.png",
-    link: "/ntf-card",
+    title: "Order Summary Component",
+    imgURL: "/img/order_preview.png",
+    link: "/order-card",
+  },
+  {
+    title: "QR Code Component",
+    imgURL: "/img/qr_preview.png",
+    link: "/qrcode",
   },
 ];
 </script>

@@ -38,7 +38,7 @@
         <img
           src="/img/image-avatar.png"
           alt="avatar"
-          class="h-8 w-8 rounded-full"
+          class="h-8 w-8 rounded-full border border-[#97AECD]"
         />
         <p class="text-[#97AECD]">
           Creation of
