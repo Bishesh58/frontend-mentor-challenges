@@ -65,7 +65,7 @@
       v-else
       class="bg-white text-slate-800 rounded-2xl p-5 m-4 md:m-0 md:p-5 flex flex-col font-light max-w-[450px]"
     >
-      <img src="svg/icon-success.svg" alt="" class="w-8 h-8 md:w-12 md:h-12" />
+      <img src="/svg/icon-success.svg" alt="" class="w-8 h-8 md:w-12 md:h-12" />
       <h1 class="text-4xl font-semibold my-4 md:my-6">
         Thanks for subscribing!
       </h1>
