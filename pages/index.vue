@@ -22,6 +22,11 @@
 <script setup>
 const data = [
   {
+    title: "Newsletter sign-up form",
+    imgURL: "/img/news_letter_preview.png",
+    link: "/news-letter",
+  },
+  {
     title: "Interactive rating component",
     imgURL: "/img/rating_preview.png",
     link: "/rating",

@@ -13,7 +13,7 @@ export default defineNuxtConfig({
       "@nuxtjs/google-fonts",
       {
         families: {
-          Roboto: [400, 600, 700, 900],
+          Roboto: [300, 400, 600, 700, 900],
           Outfit: [300, 400, 600, 700, 900],
           Inter: [400, 700],
           "Josefin+Sans": true,
