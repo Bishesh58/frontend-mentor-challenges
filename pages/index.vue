@@ -46,11 +46,6 @@ const data = [
     imgURL: "/img/order_preview.png",
     link: "/order-card",
   },
-  {
-    title: "QR Code Component",
-    imgURL: "/img/qr_preview.png",
-    link: "/qrcode",
-  },
 ];
 </script>
 
