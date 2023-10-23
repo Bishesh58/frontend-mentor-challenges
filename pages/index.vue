@@ -22,6 +22,11 @@
 <script setup>
 const data = [
   {
+    title: "Four card feature section",
+    imgURL: "/img/feature_card_preview.png",
+    link: "/features-card",
+  },
+  {
     title: "Newsletter sign-up form",
     imgURL: "/img/news_letter_preview.png",
     link: "/news-letter",

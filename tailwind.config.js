@@ -12,6 +12,7 @@ export default {
     extend: {
       fontFamily: {
         Roboto: ["Roboto"],
+        Poppins: ["Poppins"],
         Outfit: ["Outfit"],
         Lato: ["Lato"],
         Inter: ["Inter"],
