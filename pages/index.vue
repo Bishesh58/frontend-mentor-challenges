@@ -22,6 +22,11 @@
 <script setup>
 const data = [
   {
+    title: "Notifications page",
+    imgURL: "/img/notification_preview.png",
+    link: "/notification",
+  },
+  {
     title: "Four card feature section",
     imgURL: "/img/feature_card_preview.png",
     link: "/features-card",
