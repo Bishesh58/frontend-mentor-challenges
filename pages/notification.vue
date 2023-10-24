@@ -36,7 +36,7 @@
 const notifications = [
   {
     name: "Mark Webber",
-    imgURL: "/img/user/avatar-mark-webber.webp",
+    imgURL: "/img/user/mark.webp",
     action: "reacted to your recent post",
     post: "My first tournament today!",
     message: "",
