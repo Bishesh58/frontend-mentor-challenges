@@ -24,6 +24,7 @@ export default defineNuxtConfig({
             ital: [100],
           },
           Mohave: true,
+          Rubik: [300, 400, 600, 700, 900],
         },
       },
     ],

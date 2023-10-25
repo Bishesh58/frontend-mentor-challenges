@@ -22,6 +22,11 @@
 <script setup>
 const data = [
   {
+    title: "Time tracking dashboard",
+    imgURL: "/img/time_tracking_preview.png",
+    link: "/time-tracking-dashboard",
+  },
+  {
     title: "Notifications page",
     imgURL: "/img/notification_preview.png",
     link: "/notification",

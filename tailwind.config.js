@@ -18,6 +18,7 @@ export default {
         Inter: ["Inter"],
         Raleway: ["Raleway"],
         Mohave: ["Mohave"],
+        Rubik: ["Rubik"],
       },
     },
   },
