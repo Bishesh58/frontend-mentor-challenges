@@ -19,6 +19,7 @@ export default {
         Raleway: ["Raleway"],
         Mohave: ["Mohave"],
         Rubik: ["Rubik"],
+        Barlow: ["Barlow+Semi+Condensed"],
       },
     },
   },

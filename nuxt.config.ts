@@ -18,6 +18,7 @@ export default defineNuxtConfig({
           Outfit: [300, 400, 600, 700, 900],
           Inter: [400, 700],
           "Josefin+Sans": true,
+          "Barlow+Semi+Condensed": [400, 600, 700],
           Lato: [100, 300, 400, 700],
           Raleway: {
             wght: [100, 400, 600, 700],

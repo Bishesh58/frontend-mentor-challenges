@@ -22,6 +22,11 @@
 <script setup>
 const data = [
   {
+    title: "Testimonials grid section",
+    imgURL: "/img/testimonials_preview.png",
+    link: "/testimonials",
+  },
+  {
     title: "Time tracking dashboard",
     imgURL: "/img/time_tracking_preview.png",
     link: "/time-tracking-dashboard",
