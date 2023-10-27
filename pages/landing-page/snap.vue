@@ -85,7 +85,7 @@
           @click="isSidebarOpen = false"
         ></div>
         <div
-          class="fixed top-0 right-0 z-20 max-sm:w-[250px] max-md:w-[400px] h-screen min-w-fit bg-white shadow-xl transition-transform translate-x-full"
+          class="fixed top-0 right-0 z-20 max-sm:w-[250px] max-md:w-[400px] h-screen min-w-fit bg-white shadow-xl animate-fade-left animate-ease-in-out animate-duration-300"
           :class="isSidebarOpen ? 'translate-x-0' : ''"
         >
           <div class="p-4 flex flex-col">
@@ -109,7 +109,7 @@
               <!-- features sub menu -->
               <div
                 v-if="isFeatureToggled"
-                class="h-fit bg-white px-8 flex flex-col gap-3"
+                class="h-fit bg-white px-8 flex flex-col gap-3 animate-fade"
               >
                 <div
                   class="flex items-center gap-3 opacity-60 hover:opacity-100"
@@ -149,7 +149,7 @@
               <!-- company sub menu -->
               <div
                 v-if="isCompanyToggled"
-                class="h-fit bg-white px-8 flex flex-col gap-3"
+                class="h-fit bg-white px-8 flex flex-col gap-3 animate-fade"
               >
                 <div
                   class="flex items-center gap-3 opacity-60 hover:opacity-100"
@@ -196,16 +196,20 @@
         <div
           class="flex-1 flex flex-col max-md:p-0 max-md:pt-8 p-8 pt-20 max-md:text-center max-md:items-center"
         >
-          <h1 class="text-4xl md:text-6xl font-semibold leading-[1.1]">
+          <h1
+            class="text-4xl md:text-6xl font-semibold leading-[1.1] animate-fade-right animate-duration-1000"
+          >
             Make <br class="hidden md:inline-block" />
             remote Work
           </h1>
-          <p class="py-6 px-4 md:px-0 md:py-12 md:w-[400px] opacity-60">
+          <p
+            class="py-6 px-4 md:px-0 md:py-12 md:w-[400px] opacity-60 animate-fade-right animate-duration-1000 animate-delay-500"
+          >
             Get your team in sync, no matter your location. Streamline
             processes, create team rituals, and watch productivity soar.
           </p>
           <button
-            class="px-4 py-2 w-fit rounded-lg border bg-black text-white hover:bg-white border-black border-opacity-60 hover:opacity-100 hover:text-black text-base"
+            class="px-4 py-2 w-fit rounded-lg border bg-black text-white hover:bg-white border-black border-opacity-60 hover:opacity-100 hover:text-black text-base animate-fade-down animate-delay-700 animate-duration-1000"
           >
             Learn more
           </button>
@@ -223,7 +227,9 @@
           </div>
         </div>
         <!-- right -->
-        <div class="flex-1 max-md:p-0 p-8">
+        <div
+          class="flex-1 max-md:p-0 p-8 animate-fade-left animate-duration-1000"
+        >
           <img
             src="/img/snap-hero-desktop.png"
             alt=""
