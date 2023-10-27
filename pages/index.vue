@@ -22,7 +22,7 @@
 <script setup>
 const data = [
   {
-    title: "Testimonials grid section",
+    title: "Intro section with dropdown navigation",
     imgURL: "/img/landing_snap_preview.png",
     link: "/landing-page/snap",
   },
