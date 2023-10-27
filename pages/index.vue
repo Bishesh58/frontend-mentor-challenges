@@ -23,6 +23,11 @@
 const data = [
   {
     title: "Testimonials grid section",
+    imgURL: "/img/landing_snap_preview.png",
+    link: "/landing-page/snap",
+  },
+  {
+    title: "Testimonials grid section",
     imgURL: "/img/testimonials_preview.png",
     link: "/testimonials",
   },
