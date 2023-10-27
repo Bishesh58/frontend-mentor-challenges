@@ -13,6 +13,7 @@ export default {
       fontFamily: {
         Roboto: ["Roboto"],
         Poppins: ["Poppins"],
+        Epilogue: ["Epilogue"],
         Outfit: ["Outfit"],
         Lato: ["Lato"],
         Inter: ["Inter"],

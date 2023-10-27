@@ -15,6 +15,7 @@ export default defineNuxtConfig({
         families: {
           Roboto: [300, 400, 600, 700, 900],
           Poppins: [300, 400, 600, 700, 900],
+          Epilogue: [300, 400, 600, 700, 900],
           Outfit: [300, 400, 600, 700, 900],
           Inter: [400, 700],
           "Josefin+Sans": true,
