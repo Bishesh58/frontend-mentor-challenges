@@ -22,6 +22,11 @@
 <script setup>
 const data = [
   {
+    title: "Social Media Dashboard",
+    imgURL: "/img/social_media_dashboard_preview.png",
+    link: "/social-media-dashboard",
+  },
+  {
     title: "Intro section with dropdown navigation",
     imgURL: "/img/landing_snap_preview.png",
     link: "/landing-page/snap",
