@@ -194,7 +194,7 @@
       <div class="flex max-md:flex-col-reverse max-md:py-4 max-md:px-0 p-16">
         <!-- left -->
         <div
-          class="flex-1 flex flex-col max-md:p-0 max-md:pt-8 p-8 pt-20 max-md:text-center max-md:items-center"
+          class="flex-1 flex flex-col max-md:p-0 max-md:pt-8 px-8 pt-20 max-md:text-center max-md:items-center"
         >
           <h1
             class="text-4xl md:text-6xl font-semibold leading-[1.1] animate-fade-right animate-duration-1000"
@@ -228,12 +228,12 @@
         </div>
         <!-- right -->
         <div
-          class="flex-1 max-md:p-0 p-8 animate-fade-left animate-duration-1000"
+          class="flex-1 max-md:p-0 px-8 animate-fade-left animate-duration-1000"
         >
           <img
             src="/img/snap-hero-desktop.png"
             alt=""
-            class="object-contain max-md:w-[375px] mx-auto max-md:h-[375px] w-[640px] h-[640px]"
+            class="object-contain max-md:w-[375px] mx-auto max-md:h-[375px] h-[512px]"
           />
         </div>
       </div>
