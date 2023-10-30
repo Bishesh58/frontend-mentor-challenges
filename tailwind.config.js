@@ -21,6 +21,8 @@ export default {
         Mohave: ["Mohave"],
         Rubik: ["Rubik"],
         Barlow: ["Barlow+Semi+Condensed"],
+        Overpass: ["Overpass"],
+        Ubuntu: ["Ubuntu"],
       },
     },
   },
