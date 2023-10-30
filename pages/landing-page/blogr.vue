@@ -205,6 +205,11 @@
             </button>
           </div>
         </div>
+
+         <!-- footer -->
+      <div class="bg-slate-800 p-8">
+        <Footer />
+      </div>
       </div>
     </div>
   </div>
