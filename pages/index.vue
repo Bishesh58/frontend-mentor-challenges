@@ -22,6 +22,11 @@
 <script setup>
 const data = [
   {
+    title: "Blogr landing page",
+    imgURL: "/img/landing_blogr_preview.png",
+    link: "/landing-page/blogr",
+  },
+  {
     title: "Social Media Dashboard",
     imgURL: "/img/social_media_dashboard_preview.png",
     link: "/social-media-dashboard",
