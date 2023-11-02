@@ -1,16 +1,27 @@
 <template>
-  <div class="bg-[#FAFAFA] font-Commissioner">
+  <div class="bg-[#FAFAFA] font-Commissioner relative">
     <div
       class="bg-[url('/img/image-hero-mobile.jpg')] md:bg-[url('/img/image-hero-desktop.jpg')] h-80 bg-no-repeat bg-cover bg-center md:bg-bottom"
     >
-      <header class="p-4 text-white max-w-7xl mx-auto">
+      <header v-if="!isMobileMenu" class="p-4 text-white max-w-7xl mx-auto">
         <nav class="flex justify-between items-center space-x-4">
           <div class="flex-1">
             <img src="/svg/logo-crowdfunding.svg" alt="" />
           </div>
-          <a href="#">About</a>
-          <a href="#">Discover</a>
-          <a href="#">Get started</a>
+          <div class="gap-4 hidden md:flex">
+            <a href="#" class="hover:underline hover:underline-offset-4"
+              >About</a
+            >
+            <a href="#" class="hover:underline hover:underline-offset-4"
+              >Discover</a
+            >
+            <a href="#" class="hover:underline hover:underline-offset-4"
+              >Get started</a
+            >
+          </div>
+          <div class="md:hidden" @click="isMobileMenu = true">
+            <Icon name="ic:round-menu" size="32px" />
+          </div>
         </nav>
       </header>
     </div>
@@ -38,7 +49,7 @@
 
             <button class="flex group text-sm" @click="toggleBookmark">
               <span
-                class="h-10 w-10 rounded-full flex justify-center items-center -mr-4 z-10 bg-gray-900 group-hover:bg-gray-500"
+                class="h-10 w-10 rounded-full flex justify-center items-center -mr-4 bg-gray-900 group-hover:bg-gray-500 z-10"
                 :class="isBookmarked ? ' bg-[#147B74]' : ''"
                 ><Icon
                   name="mdi:bookmark"
@@ -111,6 +122,7 @@
               </p>
               <button
                 class="rounded-full px-4 py-2 bg-[#3CB4AC] hover:bg-[#147B74] text-white text-sm"
+                @click="isModalSuccesss = true"
               >
                 Select Reward
               </button>
@@ -134,6 +146,7 @@
               </p>
               <button
                 class="rounded-full px-4 py-2 bg-[#3CB4AC] hover:bg-[#147B74] text-white text-sm"
+                @click="isModalSuccesss = true"
               >
                 Select Reward
               </button>
@@ -162,15 +175,148 @@
               </button>
             </div>
           </div>
-        
+
+          <!-- Selected pledge start -->
+          <div>Enter your pledge $25 Continue</div>
+
+          <!-- Selected pledge start -->
+          <div>Enter your pledge $75 Continue</div>
+          <!-- Selected pledge end -->
+
+          <!-- Selected pledge  start -->
+          <div>Enter your pledge $200 Continue</div>
+          <!-- Selected pledge end -->
+
+          <!-- Selection modal end -->
         </div>
       </main>
+    </div>
+    <!-- mobile menu -->
+    <div
+      v-if="isMobileMenu"
+      class="hidden absolute top-0 left-0 right-0 bottom-0 z-50 bg-black/50 max-md:block text-sm"
+    >
+      <header class="p-4 text-white">
+        <nav class="flex justify-between items-center space-x-4">
+          <div class="flex-1">
+            <img src="/svg/logo-crowdfunding.svg" alt="" />
+          </div>
+          <div @click="isMobileMenu = false">
+            <Icon name="ic:round-close" size="32px" />
+          </div>
+        </nav>
+      </header>
+      <div class="flex flex-col bg-white m-4 rounded-md">
+        <a href="#" class="py-2.5 px-4 hover:font-semibold">About</a>
+        <a href="#" class="py-2.5 px-4 hover:font-semibold border-y"
+          >Discover</a
+        >
+        <a href="#" class="py-2.5 px-4 hover:font-semibold">Get started</a>
+      </div>
+    </div>
+    <!-- Success modal start -->
+    <div
+      v-if="isModalSuccesss"
+      class="absolute -top-40 left-0 right-0 bottom-0 z-50 bg-black/50 text-sm flex justify-center items-center"
+    >
+      <div
+        class="p-10 m-6 max-w-md rounded-md bg-white text-center flex flex-col justify-center items-center gap-4 shadow-md"
+      >
+        <div
+          class="h-16 w-16 rounded-full flex justify-center items-center text-white bg-[#3CB4AC]"
+        >
+          <Icon name="mdi:check" size="32px" />
+        </div>
+        <h2 class="pt-4 font-bold text-base">Thanks for your support!</h2>
+        <p class="text-xs text-gray-400 leading-relaxed">
+          Thanks for your support! Your pledge brings us one step closer to
+          sharing Mastercraft Bamboo Monitor Riser worldwide. You will get an
+          email once our campaign is completed.
+        </p>
+        <button
+          class="rounded-full px-8 py-2 bg-[#3CB4AC] hover:bg-[#147B74] text-white w-fit"
+          @click="isModalSuccesss = false"
+        >
+          got it!
+        </button>
+      </div>
+    </div>
+    <!-- Success modal end -->
+    <div
+      class="absolute -top-40 left-0 right-0 bottom-0 z-50 bg-black/50 text-sm flex justify-center items-center"
+    >
+      <div
+        class="p-10 m-6 max-w-2xl rounded-md bg-white flex flex-col justify-center items-center gap-4 shadow-md"
+      >
+        <div class="flex justify-between w-full">
+          <h2 class="font-semibold text-xl">Back this project</h2>
+          <Icon name="mdi:close" size="16px" />
+        </div>
+        <p class="text-sm text-gray-400 w-full text-left">
+          Want to support us in bringing Mastercraft Bamboo Monitor Riser out in
+          the world?
+        </p>
+        <div class="border rounded-md">
+          <div class="p-6">
+            <div class="flex items-center relative">
+              <div class="self-start">
+                <div
+                  class="h-6 w-6 border rounded-full flex justify-center items-center"
+                >
+                  <div class="h-3.5 w-3.5 bg-[#3CB4AC] rounded-full"></div>
+                </div>
+              </div>
+              <div class="text-left px-6">
+                <h2 class="font-semibold text-sm">
+                  Bamboo Stand
+                  <span class="text-[#3CB4AC] text-sm px-2"
+                    >Pledge $25 or more</span
+                  >
+                </h2>
+                <p class="text-sm text-gray-400 leading-relaxed py-4">
+                  You get an ergonomic stand made of natural bamboo. You've
+                  helped us launch our promotional campaign, and you’ll be added
+                  to a special Backer member list.
+                </p>
+              </div>
+              <p
+                class="absolute max-md:left-0 max-md:bottom-0 md:top-0 md:right-0 font-bold"
+              >
+                101
+                <span class="text-xs text-gray-400 font-normal px-1">left</span>
+              </p>
+            </div>
+          </div>
+
+          <hr />
+          <div class="flex justify-between p-6">
+            <p class="text-gray-400">Enter your pledge</p>
+            <div class="flex justify-between gap-4">
+              <div class="px-4 py-2 rounded-full border w-18">
+                <span class="px-1 text-gray-400">$</span>
+                <input
+                  type="text"
+                  placeholder="25"
+                  class="inline-block w-6 outline-none placeholder:text-black font-bold"
+                />
+              </div>
+              <button
+                class="rounded-full px-4 py-2 bg-[#3CB4AC] hover:bg-[#147B74] text-white text-sm"
+              >
+                continue
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 const isBookmarked = ref(false);
+const isMobileMenu = ref(false);
+const isModalSuccesss = ref(false);
 
 const toggleBookmark = () => {
   isBookmarked.value = !isBookmarked.value;
