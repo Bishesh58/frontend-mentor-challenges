@@ -23,6 +23,7 @@ export default {
         Barlow: ["Barlow+Semi+Condensed"],
         Overpass: ["Overpass"],
         Ubuntu: ["Ubuntu"],
+        Commissioner: ["Commissioner"],
       },
     },
   },

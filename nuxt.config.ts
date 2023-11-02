@@ -19,6 +19,7 @@ export default defineNuxtConfig({
           Outfit: [300, 400, 600, 700, 900],
           Ubuntu: [300, 400, 600, 700, 900],
           Overpass: [300, 400, 600, 700, 900],
+          Commissioner: [300, 400, 600, 700, 900],
           Inter: [300, 400, 600, 700, 900],
           "Josefin+Sans": true,
           "Barlow+Semi+Condensed": [400, 600, 700],
