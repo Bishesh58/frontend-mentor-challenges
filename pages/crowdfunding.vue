@@ -123,7 +123,7 @@
               </p>
               <button
                 class="rounded-full px-4 py-2 bg-[#3CB4AC] hover:bg-[#147B74] text-white text-sm"
-                @click="isModalSuccesss = true"
+                @click="handleSelectBamboo"
               >
                 Select Reward
               </button>
@@ -147,7 +147,7 @@
               </p>
               <button
                 class="rounded-full px-4 py-2 bg-[#3CB4AC] hover:bg-[#147B74] text-white text-sm"
-                @click="isModalSuccesss = true"
+                @click="handleSelectBlackEdition"
               >
                 Select Reward
               </button>
@@ -241,10 +241,10 @@
         <div class="flex justify-between w-full">
           <h2 class="font-semibold text-xl">Back this project</h2>
           <Icon
-            name="mdi:close"
+            name="mdi:close-thick"
             size="20px"
             @click="closePledgeModal"
-            class="hover:cursor-pointer hover:font-bold hover:bg-gray-300"
+            class="hover:cursor-pointer hover:font-bold text-gray-400 hover:text-gray-700"
           />
         </div>
         <p class="text-sm text-gray-400 w-full text-left">
@@ -514,6 +514,15 @@ const closePledgeModal = () => {
 const resetModal = () => {
   isModalSuccesss.value = false;
   closePledgeModal();
+};
+
+const handleSelectBamboo = () => {
+  isBackModal.value = true;
+  togglePledge(1);
+};
+const handleSelectBlackEdition = () => {
+  isBackModal.value = true;
+  togglePledge(2);
 };
 </script>
 
