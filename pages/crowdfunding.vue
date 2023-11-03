@@ -490,6 +490,9 @@
 </template>
 
 <script setup>
+useHead({
+  title: "Frontend Mentor | Crowdfunding product page",
+});
 const isBookmarked = ref(false);
 const isMobileMenu = ref(false);
 const isModalSuccesss = ref(false);

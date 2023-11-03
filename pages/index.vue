@@ -22,6 +22,11 @@
 <script setup>
 const data = [
   {
+    title: "Crowdfunding product page",
+    imgURL: "/img/crowdfunding_preview.png",
+    link: "/crowdfunding",
+  },
+  {
     title: "Blogr landing page",
     imgURL: "/img/landing_blogr_preview.png",
     link: "/landing-page/blogr",
