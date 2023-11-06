@@ -57,7 +57,7 @@
       </div>
     </div>
     <div class="max-w-7xl mx-auto">
-      <section class="flex flex-col lg:flex-row max-lg:px-8 py-20">
+      <section class="flex flex-col lg:flex-row max-lg:px-8 max-lg:py-8  py-20">
         <img src="/img/image-interactive.jpg" alt="" />
         <div class="py-8 lg:p-16 lg:-ml-40 bg-white self-end">
           <h1
@@ -65,7 +65,9 @@
           >
             The leader in interactive VR
           </h1>
-          <p class="text-sm text-center md:text-left leading-relaxed tracking-wide text-gray-500">
+          <p
+            class="text-sm text-center md:text-left leading-relaxed tracking-wide text-gray-500"
+          >
             Founded in 2011, Loopstudios has been producing world-class virtual
             reality projects for some of the best companies around the globe.
             Our award-winning creations have transformed businesses through
@@ -73,13 +75,15 @@
           </p>
         </div>
       </section>
-      <section class="max-lg:px-8 py-20 pt-0">
-        <div class="flex justify-between items-center">
-          <h1 class="text-3xl font-light uppercase tracking-wider py-3">
+      <section class="max-lg:px-8 max-lg:pb-8 py-20 pt-0">
+        <div class="flex justify-center md:justify-between items-center">
+          <h1
+            class="text-xl md:text-3xl font-light uppercase tracking-wider py-3"
+          >
             Our creations
           </h1>
           <button
-            class="uppercase font-thin border px-6 py-2 pt-2.5 border-black hover:bg-gray-800 hover:text-white"
+            class="hidden md:block uppercase font-thin border px-6 py-2 pt-2.5 border-black hover:bg-gray-800 hover:text-white"
           >
             see all
           </button>
@@ -126,6 +130,11 @@
             <h1 class="uppercase py-4 text-lg">Make it fisheye</h1>
           </div>
         </div>
+        <button
+          class="md:hidden uppercase font-thin border px-6 py-2 pt-2.5 border-black hover:bg-gray-800 hover:text-white"
+        >
+          see all
+        </button>
       </section>
     </div>
     <!-- footer -->
