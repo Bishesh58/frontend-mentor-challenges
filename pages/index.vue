@@ -22,6 +22,11 @@
 <script setup>
 const data = [
   {
+    title: "Loopstudios landing page",
+    imgURL: "/img/loopstudios_preview.png",
+    link: "/landing-page/loopstudios",
+  },
+  {
     title: "Crowdfunding product page",
     imgURL: "/img/crowdfunding_preview.png",
     link: "/crowdfunding",
