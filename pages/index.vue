@@ -22,6 +22,11 @@
 <script setup>
 const data = [
   {
+    title: "Insure landing page",
+    imgURL: "/img/insure_preview.png",
+    link: "/landing-page/insure",
+  },
+  {
     title: "Loopstudios landing page",
     imgURL: "/img/loopstudios_preview.png",
     link: "/landing-page/loopstudios",
