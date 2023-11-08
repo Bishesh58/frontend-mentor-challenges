@@ -22,6 +22,11 @@
 <script setup>
 const data = [
   {
+    title: "Fylo theme landing page",
+    imgURL: "/fylo/fylo_preview.png",
+    link: "/landing-page/fylo",
+  },
+  {
     title: "Insure landing page",
     imgURL: "/img/insure_preview.png",
     link: "/landing-page/insure",
