@@ -4,8 +4,8 @@
     <div class="relative">
       <div class="max-w-7xl mx-auto p-8 relative z-30">
         <!-- header -->
-        <header class="flex justify-between items-center">
-          <img src="/fylo/logo.svg" alt="" class="h-[40px]" />
+        <header class="flex justify-between items-center text-sm">
+          <img src="/fylo/logo.svg" alt="" class="h-[32px] max-md:h-[24px]" />
           <nav class="flex gap-4 max-md:text-sm">
             <a href="#" class="hover:underline hover:underline-offset-4"
               >Features</a
@@ -19,8 +19,10 @@
           </nav>
         </header>
         <!-- Intro -->
-        <div class="py-16 flex flex-col gap-4 justify-center items-center">
-          <img src="/fylo/illustration-intro.png" alt="" />
+        <div
+          class="max-md:py-10 2xl:py-16 flex flex-col gap-4 justify-center items-center"
+        >
+          <img src="/fylo/illustration-intro.png" alt="" class="xl:h-[400px]" />
           <h1
             class="font-Raleway text-4xl text-center font-semibold leading-snug max-w-[720px] py-4"
           >
@@ -47,7 +49,7 @@
     </div>
     <!-- main -->
     <main class="bg-[#181E2A]">
-      <div class="max-w-7xl mx-auto p-8">
+      <div class="max-w-7xl mx-auto px-8 py-16">
         <section class="grid gap-20 grid-cols-1 md:grid-cols-2">
           <div class="flex flex-col gap-2 justify-center items-center">
             <img src="/fylo/icon-access-anywhere.svg" alt="" />
@@ -101,7 +103,7 @@
           </div>
         </section>
         <section
-          class="py-20 gap-20 flex flex-col md:flex-row justify-between items-center"
+          class="py-32 gap-20 flex flex-col md:flex-row justify-between items-center"
         >
           <img src="/fylo/illustration-stay-productive.png" alt="" />
           <div class="flex flex-col gap-4">
@@ -128,7 +130,7 @@
             /></a>
           </div>
         </section>
-        <img src="/fylo/bg-quotes.png" alt="" class="-mb-20 w-[32px]">
+        <img src="/fylo/bg-quotes.png" alt="" class="-mb-20 w-[32px]" />
         <section class="flex flex-col md:flex-row gap-6 my-20">
           <div class="rounded-md bg-[#202A3C] px-4 py-6">
             <p class="font-light text-sm opacity-75">
