@@ -12,12 +12,12 @@
         >Cardholder name</label
       >
       <input
-        type="tel"
-        maxlength="20"
+        type="text"
         v-model="name"
         class="outline-none border rounded-md py-2 px-4 w-full mb-6 bg-white"
         placeholder="e.g. Jane Doe"
       />
+
       <label for="name" class="uppercase tracking-widest pb-1"
         >card number</label
       >
@@ -90,6 +90,7 @@
           </h1>
           <div class="flex justify-between items-center text-sm">
             <p>{{ name ? name : "Jane Doe" }}</p>
+
             <p>
               {{ expiryMM ? expiryMM : "00" }}/{{ expiryYY ? expiryYY : "00" }}
             </p>
@@ -102,14 +103,12 @@
 
 <script setup>
 import { useToast } from "vue-toastification";
-import { useForm } from 'vee-validate';
 
 const toast = useToast();
-const { values } = useForm();
-console.log(values)
 
-const number = ref("");
 const name = ref("");
+const number = ref("");
+
 const expiryMM = ref("");
 const expiryYY = ref("");
 const csv = ref("");

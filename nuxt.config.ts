@@ -37,13 +37,6 @@ export default defineNuxtConfig({
     ],
     "@vueuse/nuxt",
     "nuxt-icon",
-    [
-      "@vee-validate/nuxt",
-      {
-        // disable or enable auto imports
-        autoImports: false,
-      },
-    ],
   ],
   build: {
     transpile: ["vue-toastification"],
