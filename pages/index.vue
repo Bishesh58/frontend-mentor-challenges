@@ -22,6 +22,11 @@
 <script setup>
 const data = [
   {
+    title: "Interactive card",
+    imgURL: "/img/interactive_card_preview.png",
+    link: "/interactive-card",
+  },
+  {
     title: "Easybank landing page",
     imgURL: "/easybank/easybank_preview.png",
     link: "/landing-page/easybank",
