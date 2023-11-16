@@ -2,7 +2,9 @@
   <div
     class="bg-[url('/space-tourism/bg-home-desktop.jpg')] h-screen bg-no-repeat bg-cover bg-center px-8 py-32 text-slate-200"
   >
-    <div class="h-full pb-20 flex justify-between items-end max-w-7xl mx-auto">
+    <div
+      class="h-full pb-20 flex justify-between items-end max-w-7xl max-h-[1024px] mx-auto"
+    >
       <div class="flex-1 pl-32">
         <p
           class="text-3xl uppercase font-thin font-Mohave tracking-widest text-slate-500"

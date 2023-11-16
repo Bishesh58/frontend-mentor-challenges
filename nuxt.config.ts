@@ -38,6 +38,7 @@ export default defineNuxtConfig({
     ],
     "@vueuse/nuxt",
     "nuxt-icon",
+    "@nuxt/ui",
   ],
   build: {
     transpile: ["vue-toastification"],
