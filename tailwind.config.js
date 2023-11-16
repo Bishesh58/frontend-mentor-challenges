@@ -26,6 +26,7 @@ export default {
         Overpass: ["Overpass"],
         Ubuntu: ["Ubuntu"],
         Commissioner: ["Commissioner"],
+        CrimsonText: ["Crimson Text"],
       },
     },
   },
