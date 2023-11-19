@@ -25,10 +25,10 @@
               background: '',
               marker: {
                 background:
-                  'bg-gray-800/10 dark:bg-gray-800/10 border-b-2 text-slate-400',
+                  'bg-gray-800/10 dark:bg-gray-800/10 border-b-2 text-slate-400 transform translate-x-1/2',
                 rounded: '',
-                border: 'border border-b-2',
-                base: 'max-w-[52px]',
+                border: 'border',
+                base: 'max-w-[40px]',
               },
               tab: {
                 base: 'text-slate-400',
