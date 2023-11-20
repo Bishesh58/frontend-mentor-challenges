@@ -3,7 +3,7 @@
     class="flex flex-col md:flex-row w-screen h-screen min-w-[375px] bg-slate-200"
   >
     <div
-      class="flex-[0.2] md:flex-[0.3] lg:flex-[0.4] bg-gradient-to-r from-gray-800 to-gray-600 py-4"
+      class="flex-[0.2] md:flex-[0.3] lg:flex-[0.4] bg-[url('/img/bg-main-desktop.png')] bg-no-repeat bg-cover bg-center py-4"
     ></div>
     <form
       @submit.prevent="handleSubmit"
@@ -102,7 +102,7 @@
         </div>
       </div>
       <button
-        class="w-full text-center p-4 my-4 bg-gradient-to-r from-gray-800 to-gray-600 text-white rounded-md hover:bg-green-500"
+        class="w-full text-center p-4 my-4 bg-gradient-to-r from-purple-500 to-red-500 text-white rounded-md hover:bg-gradient-to-r hover:from-red-400 hover:to-purple-400"
         type="submit"
       >
         Confirm
@@ -120,7 +120,7 @@
         </div>
 
         <div
-          class="bg-gradient-to-r from-gray-800 to-gray-600 text-white rounded-md w-[280px] h-[155px] absolute z-10 left-0 top-[90px] lg:top-0 lg:left-20 xl:left-40 backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-500 p-4 overflow-hidden"
+          class="bg-[url('/img/bg-card-front.png')] text-white rounded-xl w-[280px] h-[155px] absolute z-10 left-0 top-[90px] lg:top-0 lg:left-20 xl:left-40 border p-4 overflow-hidden"
         >
           <div class="flex items-center gap-2">
             <div class="h-6 w-6 bg-white rounded-full"></div>
@@ -129,7 +129,7 @@
           <h1 class="pt-8 pb-4 text-xl tracking-wide">
             {{ formData.num ? formData.num : "0000 0000 0000 0000" }}
           </h1>
-          <div class="flex justify-between items-center text-sm">
+          <div class="flex justify-between items-center text-sm uppercase">
             <p>{{ formData.name ? formData.name : "Jane Doe" }}</p>
 
             <p>
@@ -175,19 +175,13 @@ const reset = () => {
 };
 
 const handleSubmit = async () => {
-  //warning for empty form submission
-  const isEmptyField = Object.values(formData).every((value) => !value);
-  if (isEmptyField) {
-    toast.warning("Please fill out all required fields.");
-    return;
-  }
   //validate form
   const result = await v$.value.$validate();
   if (!result) {
     return;
   }
   //success
-  toast.success("Submitted!");
+  toast.success("Your details are added! Thank you.");
 
   reset();
 };
@@ -199,12 +193,12 @@ const rules = computed(() => {
       required,
       alpha,
       minLength: minLength(2),
-      maxLength: maxLength(10),
+      maxLength: maxLength(20),
     },
     num: {
       required,
-      minLength: minLength(12),
-      maxLength: maxLength(12),
+      minLength: minLength(16),
+      maxLength: maxLength(16),
     },
     expiryMM: {
       required,
@@ -225,6 +219,37 @@ const rules = computed(() => {
 });
 
 const v$ = useVuelidate(rules, formData);
+
+//fun to limit the length of the inputs
+const limitInputLength = (field, maxLength) => {
+  let fieldValue = formData[field];
+
+  if (typeof fieldValue === "number") {
+    // Convert number to string for length comparison
+    fieldValue = fieldValue.toString();
+  }
+
+  if (fieldValue && fieldValue.length > maxLength) {
+    // Truncate the value to meet the maximum length
+    fieldValue = fieldValue.slice(0, maxLength);
+
+    if (typeof formData[field] === "number") {
+      // Convert the string back to a number if the original type was a number
+      formData[field] = Number(fieldValue);
+    } else {
+      // Otherwise, update the form data directly
+      formData[field] = fieldValue;
+    }
+  }
+};
+
+watchEffect(() => {
+  limitInputLength("name", 20);
+  limitInputLength("num", 16);
+  limitInputLength("expiryMM", 2);
+  limitInputLength("expiryYY", 2);
+  limitInputLength("csv", 3);
+});
 </script>
 
 <style lang="scss" scoped></style>
