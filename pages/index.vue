@@ -22,6 +22,11 @@
 <script setup>
 const data = [
   {
+    title: "Space tourism multi-page website",
+    imgURL: "/img/space-tourism_preview.png",
+    link: "/space-tourism/home",
+  },
+  {
     title: "Interactive card",
     imgURL: "/img/interactive_card_preview.png",
     link: "/interactive-card",

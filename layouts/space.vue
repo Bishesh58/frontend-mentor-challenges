@@ -1,5 +1,5 @@
 <template>
-  <div class="relative bg-slate-700">
+  <div class="relative bg-slate-900">
     <header
       class="flex justify-center items-center gap-10 absolute top-5 left-0 right-0 pl-8 float-right text-white uppercase text-sm font-light tracking-widest font-mono"
     >
