@@ -3,16 +3,16 @@
     class="bg-[url('/space-tourism/bg-destination-desktop.jpg')] h-screen bg-no-repeat bg-cover bg-center px-8 text-slate-200"
   >
     <div
-      class="h-full p-10 pt-32 flex justify-between items-center gap-8 max-w-7xl mx-auto max-h-[1024px]"
+      class="h-full md:p-10 pt-32 max-md:flex-col flex justify-between items-center gap-8 max-w-7xl mx-auto max-h-[1024px]"
     >
       <div class="flex-1 flex-col flex justify-between items-center">
         <p
-          class="text-3xl uppercase font-thin font-Mohave tracking-widest text-slate-500 self-start pb-20"
+          class="text-xl md:text-3xl uppercase font-thin font-Mohave tracking-widest text-slate-500 md:self-start pb-6 md:pb-10 lg:pb-20"
         >
           Pick your destination
         </p>
         <!-- dynamic img -->
-        <img :src="selectedImg" alt="" />
+        <img :src="selectedImg" alt="" class="max-md:w-1/2" />
       </div>
       <div class="flex-1">
         <UTabs
@@ -48,14 +48,14 @@
           </template>
           <!-- tab content -->
           <template #item="{ item, index, selected }">
-            <div v-if="selected" class="p-10 min-h-[500px]">
+            <div v-if="selected" class="md:p-10 md:min-h-[500px]">
               <h1
-                class="text-7xl uppercase font-CrimsonText font-thin tracking-wider py-8 px-2"
+                class="text-4xl md:text-6xl lg:text-7xl max-md:text-center uppercase font-CrimsonText font-thin tracking-wider py-6 md:py-8 px-2"
               >
                 {{ item.label }}
               </h1>
               <p
-                class="leading-relaxed font-Mohave font-light tracking-widest text-slate-500 max-w-lg pb-8"
+                class="leading-relaxed font-Mohave font-light tracking-widest text-slate-500 max-w-lg pb-8 max-md:text-center"
               >
                 {{ item.content.description }}
               </p>
@@ -65,17 +65,19 @@
                   <span class="text-xs block text-slate-500 tracking-wider"
                     >AVG. DISTANCE</span
                   >
-                  <span class="text-2xl uppercase font-[200] leading-relaxed">{{
-                    item.content.distance
-                  }}</span>
+                  <span
+                    class="text-xl md:text-2xl uppercase font-[200] leading-relaxed"
+                    >{{ item.content.distance }}</span
+                  >
                 </p>
                 <p>
                   <span class="text-xs block text-slate-500 tracking-wider"
                     >EST. TRAVEL TIME</span
                   >
-                  <span class="text-2xl uppercase font-[200] leading-relaxed">{{
-                    item.content.travel
-                  }}</span>
+                  <span
+                    class="text-xl md:text-2xl uppercase font-[200] leading-relaxed"
+                    >{{ item.content.travel }}</span
+                  >
                 </p>
               </div>
             </div>

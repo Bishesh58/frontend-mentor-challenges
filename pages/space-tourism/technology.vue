@@ -3,7 +3,7 @@
     class="bg-[url('/space-tourism/bg-technology-desktop.jpg')] h-screen bg-no-repeat bg-cover bg-center px-8 text-slate-200"
   >
     <div
-      class="h-full p-10 pt-32 flex justify-between items-center gap-8 max-w-7xl mx-auto max-h-[1024px]"
+      class="h-full md:p-10 pt-32 flex max-md:flex-col-reverse justify-between items-center gap-8 max-w-7xl mx-auto max-h-[1024px]"
     >
       <div class="flex-1">
         <UTabs
@@ -12,9 +12,9 @@
           orientation="vertical"
           @change="onChange"
           :ui="{
-            wrapper: 'flex items-start gap-4',
+            wrapper: 'flex max-md:flex-col-reverse max-md:items-center items-start gap-4',
             list: {
-              base: 'pt-10',
+              base: 'md:pt-10',
               width: '',
               height: '',
               background: '',
@@ -25,8 +25,8 @@
                 base: '',
               },
               tab: {
-                base: 'text-gray-500 border m-4 p-8 w-20 hover:text-gray-800 hover:bg-white hover:border-none',
-                height: 'h-20',
+                base: 'text-gray-500 border m-4 md:p-8 w-12 md:w-20  hover:text-gray-800 hover:bg-white hover:border-none',
+                height: 'h-12 md:h-20',
                 active:
                   'text-bg-gray-800 dark:text-gray-800 border-white bg-white',
                 rounded: 'rounded-full',
@@ -38,7 +38,7 @@
           <template #default="{ item, index, selected }">
             <div class="flex items-center gap-2 relative truncate">
               <span
-                class="truncate uppercase text-3xl font-light tracking-widest font-mono"
+                class="truncate uppercase text-xl md:text-3xl font-light tracking-widest font-mono"
               >
                 {{ index + 1 }}</span
               >
@@ -48,20 +48,20 @@
           <template #item="{ item, index, selected }">
             <div
               v-if="selected"
-              class="py-10 pl-10 min-h-[500px] min-w-[600px]"
+              class="md:py-10 md:pl-10 md:min-h-[500px] md:min-w-[600px] max-md:flex max-md:flex-col max-md:items-center"
             >
               <p
-                class="text-2xl uppercase font-thin font-Mohave tracking-widest text-slate-500 self-start pb-1"
+                class="text-2xl uppercase font-thin font-Mohave tracking-widest text-slate-500 md:self-start pb-1"
               >
                 The terminology...
               </p>
               <h1
-                class="text-6xl uppercase font-CrimsonText font-thin tracking-wider pb-4"
+                class="text-4xl md:text-6xl max-md:text-center uppercase font-CrimsonText font-thin tracking-wider py-8 md:py-6"
               >
                 {{ item.label }}
               </h1>
               <p
-                class="leading-relaxed font-Mohave font-light tracking-widest text-slate-500 max-w-lg pb-8 text-lg"
+                class="leading-relaxed font-Mohave font-light tracking-widest text-slate-500 max-w-lg md:pb-8 text-lg max-md:text-center"
               >
                 {{ item.content.description }}
               </p>
@@ -71,7 +71,7 @@
       </div>
       <div class="flex-1 flex-col flex justify-between items-center">
         <!-- dynamic img -->
-        <img :src="selectedImg" alt="" />
+        <img :src="selectedImg" alt="" class="max-md:w-1/2" />
       </div>
     </div>
   </div>
