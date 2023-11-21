@@ -223,21 +223,55 @@ const rules = computed(() => {
       required,
       minLength: minLength(16),
       maxLength: maxLength(16),
+      positiveNumber: helpers.withMessage(
+        "Cannot be a negative number or 0",
+        (value) => {
+          return value > 0;
+        }
+      ),
     },
     expiryMM: {
       required: helpers.withMessage("cannot be empty", required),
       minLength: minLength(2),
       maxLength: maxLength(2),
+      positiveNumber: helpers.withMessage(
+        "Cannot be a negative number or 0",
+        (value) => {
+          return value > 0;
+        }
+      ),
+      validMM: helpers.withMessage(
+        "Must be a valid month (between 1 and 12)",
+        (value) => {
+          return value >= 1 && value <= 12;
+        }
+      ),
     },
     expiryYY: {
       required: helpers.withMessage("cannot be empty", required),
       minLength: minLength(2),
       maxLength: maxLength(2),
+      positiveNumber: helpers.withMessage(
+        "Cannot be a negative number or 0",
+        (value) => {
+          return value > 0;
+        }
+      ),
+      validYY: helpers.withMessage("Cannot be an expired year", (value) => {
+        const currentYearLastTwoDigits = new Date().getFullYear() % 100;
+        return value >= currentYearLastTwoDigits;
+      }),
     },
     csv: {
       required: helpers.withMessage("cannot be empty", required),
       minLength: minLength(3),
       maxLength: maxLength(3),
+      positiveNumber: helpers.withMessage(
+        "Cannot be a negative number or 0",
+        (value) => {
+          return value > 0;
+        }
+      ),
     },
   };
 });
