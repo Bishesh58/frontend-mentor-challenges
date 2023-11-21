@@ -16,6 +16,10 @@
         type="text"
         v-model="formData.name"
         class="outline-none border rounded-md py-2 px-4 w-full mb-6 bg-white"
+        :class="{
+          'outline-none border border-red-300':
+            v$.name.$pending || v$.name.$error,
+        }"
         placeholder="e.g. Jane Doe"
       />
       <!-- err msg name -->
@@ -34,6 +38,10 @@
         type="number"
         v-model="formData.num"
         class="outline-none border rounded-md py-2 px-4 w-full mb-6 bg-white"
+        :class="{
+          'outline-none border border-red-300':
+            v$.num.$pending || v$.num.$error,
+        }"
         placeholder="e.g. 1234 5678 9123 0000"
       />
       <!-- err msg num -->
@@ -52,6 +60,10 @@
             maxlength="2"
             v-model="formData.expiryMM"
             class="outline-none border rounded-md py-2 px-4 w-20 mt-1 bg-white"
+            :class="{
+              'outline-none border border-red-300':
+                v$.expiryMM.$pending || v$.expiryMM.$error,
+            }"
             placeholder="MM"
           />
           <!-- err msg MM -->
@@ -71,6 +83,10 @@
             minlength="2"
             v-model="formData.expiryYY"
             class="outline-none border rounded-md py-2 px-4 w-20 mt-1 bg-white"
+            :class="{
+              'outline-none border border-red-300':
+                v$.expiryYY.$pending || v$.expiryYY.$error,
+            }"
             placeholder="YY"
           />
           <!-- err msg YY -->
@@ -89,6 +105,10 @@
             maxlength="3"
             v-model="formData.csv"
             class="outline-none border rounded-md py-2 px-4 mt-1 bg-white"
+            :class="{
+              'outline-none border border-red-300':
+                v$.csv.$pending || v$.csv.$error,
+            }"
             placeholder="e.g. 123"
           />
           <!-- err msg csv -->
@@ -151,8 +171,8 @@ import {
   required,
   minLength,
   maxLength,
-  alpha,
   numeric,
+  helpers,
 } from "@vuelidate/validators";
 
 const toast = useToast();
@@ -178,6 +198,7 @@ const handleSubmit = async () => {
   //validate form
   const result = await v$.value.$validate();
   if (!result) {
+    console.log(v$.value);
     return;
   }
   //success
@@ -186,12 +207,15 @@ const handleSubmit = async () => {
   reset();
 };
 
+//regExp will restrict input to only alphabet with space which vuelidate alpha couldn't do
+const isAlphaWithSpace = (value) => /^[a-zA-Z\s]*$/.test(value);
+
 //form validation
 const rules = computed(() => {
   return {
     name: {
       required,
-      alpha,
+      isAlphaWithSpace: helpers.withMessage("Alphabet only", isAlphaWithSpace),
       minLength: minLength(2),
       maxLength: maxLength(20),
     },
@@ -201,17 +225,17 @@ const rules = computed(() => {
       maxLength: maxLength(16),
     },
     expiryMM: {
-      required,
+      required: helpers.withMessage("cannot be empty", required),
       minLength: minLength(2),
       maxLength: maxLength(2),
     },
     expiryYY: {
-      required,
+      required: helpers.withMessage("cannot be empty", required),
       minLength: minLength(2),
       maxLength: maxLength(2),
     },
     csv: {
-      required,
+      required: helpers.withMessage("cannot be empty", required),
       minLength: minLength(3),
       maxLength: maxLength(3),
     },
