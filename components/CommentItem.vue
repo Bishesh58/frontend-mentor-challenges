@@ -7,7 +7,7 @@ const isDisliked = ref(false);
 const isComment = ref(false);
 
 const hasReplies = computed(() => {
-  return "replies" in props.comment;
+  return props.comment.replies && props.comment.replies.length > 0;
 });
 
 const toggleLikes = () => {
@@ -20,6 +20,11 @@ const toggleDislikes = () => {
 
 const toggleComments = () => {
   isComment.value = !isComment.value;
+};
+
+const addComment = (commentObj) => {
+  props.comment.replies.push(commentObj);
+  toggleExpand.value = true;
 };
 </script>
 
@@ -112,24 +117,7 @@ const toggleComments = () => {
       </div>
     </div>
     <!-- comment slot -->
-    <div v-if="isComment" class="flex items-start gap-4 my-4 pl-8">
-      <div>
-        <img src="/img/user/angela.webp" alt="" class="h-10 w-10" />
-      </div>
-      <div
-        ref="commentInput"
-        contenteditable="true"
-        @input="handleInput"
-        class="h-20 w-96 border border-slate-200 rounded-md outline-none p-2 bg-inherit text-gray-600 overflow-y-auto"
-        placeholder="Write.."
-      ></div>
-      <button
-        @click="handleSumbmit"
-        class="bg-blue-500 text-white px-4 py-2 uppercase rounded-md"
-      >
-        send
-      </button>
-    </div>
+    <CommentForm v-if="isComment" class="pl-8 my-4" @addComment="addComment" />
     <!-- nested -->
     <div class="pl-8 py-2" v-if="toggleExpand">
       <CommentItem
