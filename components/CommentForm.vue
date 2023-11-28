@@ -18,6 +18,7 @@
 </template>
 
 <script setup>
+import moment from "moment";
 const commentInput = ref("");
 
 const { addComment } = defineProps(["addComment"]);
@@ -32,7 +33,7 @@ const handleSumbmit = () => {
     author: "John Doe",
     profileImg: "/img/user/angela.webp",
     message: commentInput.value,
-    createdAt: new Date().getSeconds(),
+    createdAt: moment(new Date()).fromNow(),
     likes: 44,
     dislikes: 55,
     replies: [],

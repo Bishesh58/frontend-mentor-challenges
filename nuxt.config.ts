@@ -44,4 +44,5 @@ export default defineNuxtConfig({
     transpile: ["vue-toastification"],
   },
   ssr: false,
+  plugins: ["~/plugins/moment.js"],
 });
