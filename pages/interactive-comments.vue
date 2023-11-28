@@ -69,53 +69,52 @@ const comments = ref([
       // More replies can be added here
     ],
   },
-  // {
-  //   id: 3,
-  //   author: "First John",
-  //   profileImg: "/img/user/angela.webp",
-  //   message:
-  //     "This is my first comment Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, reprehenderit! Quam debitis laborum ipsa provident commodi dolor recusandae. Officia natus dolor delectus ullam iusto ducimus ipsam nemo placeat itaque facilis!",
-  //   createdAt: "1 month ago",
-  //   replies: [
-  //     {
-  //       id: 4,
-  //       author: "Second John",
-  //       profileImg: "/img/user/anna.webp",
-  //       message:
-  //         "Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam!",
-  //       createdAt: "3 weeks ago",
-  //       replies: [
-  //         {
-  //           id: 8,
-  //           author: "Third John",
-  //           profileImg: "/img/user/anna.webp",
-  //           message:
-  //             "Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam!",
-  //           createdAt: "3 weeks ago",
-  //           replies: [
-  //             {
-  //               id: 8,
-  //               author: "Four John",
-  //               profileImg: "/img/user/anna.webp",
-  //               message:
-  //                 "Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam!",
-  //               createdAt: "3 weeks ago",
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: 3,
-  //   author: "John Doe",
-  //   profileImg: "/img/user/angela.webp",
-  //   message:
-  //     "This is my first comment Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, reprehenderit! Quam debitis laborum ipsa provident commodi dolor recusandae. Officia natus dolor delectus ullam iusto ducimus ipsam nemo placeat itaque facilis!",
-  //   createdAt: "1 month ago",
-  //   replies: [],
-  // },
+  {
+    id: 3,
+    author: "First John",
+    profileImg: "/img/user/angela.webp",
+    message:
+      "This is my first comment Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, reprehenderit! Quam debitis laborum ipsa provident commodi dolor recusandae. Officia natus dolor delectus ullam iusto ducimus ipsam nemo placeat itaque facilis!",
+    createdAt: "1 month ago",
+    replies: [
+      {
+        id: 4,
+        author: "Second John",
+        profileImg: "/img/user/anna.webp",
+        message:
+          "Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam!",
+        createdAt: "3 weeks ago",
+        replies: [
+          {
+            id: 8,
+            author: "Third John",
+            profileImg: "/img/user/anna.webp",
+            message:
+              "Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam!",
+            createdAt: "3 weeks ago",
+            replies: [
+              {
+                id: 8,
+                author: "Four John",
+                profileImg: "/img/user/anna.webp",
+                message:
+                  "Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam!",
+                createdAt: "3 weeks ago",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    author: "John Doe",
+    profileImg: "/img/user/angela.webp",
+    message:
+      "This is my first comment Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, reprehenderit! Quam debitis laborum ipsa provident commodi dolor recusandae. Officia natus dolor delectus ullam iusto ducimus ipsam nemo placeat itaque facilis!",
+    createdAt: "1 month ago",
+  },
 ]);
 
 const commentInput = ref("");

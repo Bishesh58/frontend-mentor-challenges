@@ -1,13 +1,21 @@
 <script setup>
 const props = defineProps(["comment"]);
 const toggleExpand = ref(true);
+console.log(props.comment);
+
+const hasReplies = computed(() => {
+  return "replies" in props.comment;
+});
 </script>
 
 <template>
-  <div class="relative">
-    <div class="w-full relative">
+  <div class="">
+    <div
+      class="w-full ml-[20px] -mt-8"
+      :class="{ 'border-l rounded-bl-lg pb-8': hasReplies }"
+    >
       <!-- first row -->
-      <div class="flex gap-2">
+      <div class="flex items-center gap-2 -ml-[20px]">
         <img :src="props.comment.profileImg" alt="" class="h-10 w-10 z-10" />
         <p>{{ props.comment.author }}</p>
         <p class="text-xs">{{ props.comment.createdAt }}</p>
@@ -61,15 +69,6 @@ const toggleExpand = ref(true);
           <span class="text-xs font-light tracking-wider">share</span>
         </div>
       </div>
-      <!-- inner join line to icon -->
-      <div
-        v-if="props.comment.replies && props.comment.replies.length > 0"
-        class="absolute z-0 left-[20px] top-0 bottom-4 w-[16px] border-b border-l border-gray-500 rounded-bl-full"
-      ></div>
-      <!-- profie join line to parent -->
-      <div
-        class="absolute z-0 -left-[12x] top-0 transform -translate-y-full bottom-4 w-[16px] border-b border-l border-gray-500 rounded-bl-full"
-      ></div>
     </div>
     <!-- nested -->
     <div class="pl-8 py-2" v-if="toggleExpand">
@@ -79,12 +78,6 @@ const toggleExpand = ref(true);
         :comment="reply"
       />
     </div>
-
-    <!-- join line -->
-    <div
-      v-if="props.comment.replies && props.comment.replies.length > 0"
-      class="absolute z-0 left-[20px] top-0 bottom-4 w-[16px] border-b border-l border-red-500 rounded-bl-full"
-    ></div>
   </div>
 </template>
 
