@@ -11,25 +11,28 @@ const hasReplies = computed(() => {
 <template>
   <div class="">
     <div
-      class="w-full ml-[20px] -mt-8"
-      :class="{ 'border-l rounded-bl-lg pb-8': hasReplies }"
+      class="w-full ml-[20px]"
+      :class="{ 'border-l border-gray-500': hasReplies }"
     >
-      <!-- first row -->
+      <!-- top -->
       <div class="flex items-center gap-2 -ml-[20px]">
         <img :src="props.comment.profileImg" alt="" class="h-10 w-10 z-10" />
         <p>{{ props.comment.author }}</p>
         <p class="text-xs">{{ props.comment.createdAt }}</p>
       </div>
+      <!-- message -->
       <div class="flex gap-2 pl-10 py-4">
         <p>
           {{ props.comment.message }}
         </p>
       </div>
-      <div class="flex items-center gap-1 pl-8">
+      <!-- bottom -->
+      <div class="flex items-center gap-1">
         <div
-          v-if="props.comment.replies && props.comment.replies.length > 0"
-          class="z-10"
-        >
+          class="w-8"
+          :class="{ 'border-b border-gray-500': hasReplies }"
+        ></div>
+        <div v-if="hasReplies" class="z-10">
           <div v-if="toggleExpand" @click="toggleExpand = !toggleExpand">
             <Icon name="ic:round-remove-circle-outline" size="16px" />
           </div>
