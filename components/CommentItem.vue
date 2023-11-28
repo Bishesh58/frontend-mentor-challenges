@@ -1,11 +1,26 @@
 <script setup>
 const props = defineProps(["comment"]);
-const toggleExpand = ref(true);
-console.log(props.comment);
+const toggleExpand = ref(false);
+// console.log(props.comment);
+const isLiked = ref(false);
+const isDisliked = ref(false);
+const isComment = ref(false);
 
 const hasReplies = computed(() => {
   return "replies" in props.comment;
 });
+
+const toggleLikes = () => {
+  isLiked.value = !isLiked.value;
+};
+
+const toggleDislikes = () => {
+  isDisliked.value = !isDisliked.value;
+};
+
+const toggleComments = () => {
+  isComment.value = !isComment.value;
+};
 </script>
 
 <template>
@@ -49,18 +64,41 @@ const hasReplies = computed(() => {
         </div>
 
         <div
-          class="hover:bg-gray-700 hover:cursor-pointer rounded-full grid place-items-center h-8 w-8"
+          class="hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 px-2"
+          @click="toggleLikes"
         >
-          <Icon name="icon-park-outline:like" size="16px" />
+          <Icon
+            :name="isLiked ? 'icon-park-solid:like' : 'icon-park-outline:like'"
+            size="16px"
+          />
+          <span
+            v-if="props.comment.likes > 0"
+            class="text-xs font-light tracking-wider"
+            >{{ props.comment.likes }}</span
+          >
         </div>
 
         <div
-          class="hover:bg-gray-700 hover:cursor-pointer rounded-full grid place-items-center h-8 w-8"
+          class="hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 px-2"
+          @click="toggleDislikes"
         >
-          <Icon name="icon-park-outline:dislike" size="16px" />
+          <Icon
+            :name="
+              isDisliked
+                ? 'icon-park-solid:dislike-two'
+                : 'icon-park-outline:dislike'
+            "
+            size="16px"
+          />
+          <span
+            v-if="props.comment.dislikes > 0"
+            class="text-xs font-light tracking-wider"
+            >{{ props.comment.dislikes }}</span
+          >
         </div>
         <div
           class="hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 px-2"
+          @click="toggleComments"
         >
           <Icon name="iconamoon:comment-bold" size="16px" />
           <span class="text-xs font-light tracking-wider">comment</span>
@@ -72,6 +110,25 @@ const hasReplies = computed(() => {
           <span class="text-xs font-light tracking-wider">share</span>
         </div>
       </div>
+    </div>
+    <!-- comment slot -->
+    <div v-if="isComment" class="flex items-start gap-4 my-4 pl-8">
+      <div>
+        <img src="/img/user/angela.webp" alt="" class="h-10 w-10" />
+      </div>
+      <div
+        ref="commentInput"
+        contenteditable="true"
+        @input="handleInput"
+        class="h-20 w-96 border border-slate-200 rounded-md outline-none p-2 bg-inherit text-gray-600 overflow-y-auto"
+        placeholder="Write.."
+      ></div>
+      <button
+        @click="handleSumbmit"
+        class="bg-blue-500 text-white px-4 py-2 uppercase rounded-md"
+      >
+        send
+      </button>
     </div>
     <!-- nested -->
     <div class="pl-8 py-2" v-if="toggleExpand">

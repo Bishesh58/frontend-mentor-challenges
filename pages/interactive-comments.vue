@@ -41,6 +41,8 @@ const comments = ref([
     message:
       "This is my first comment Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, reprehenderit! Quam debitis laborum ipsa provident commodi dolor recusandae. Officia natus dolor delectus ullam iusto ducimus ipsam nemo placeat itaque facilis!",
     createdAt: "1 month ago",
+    likes: 9,
+    dislikes: 5,
     replies: [
       {
         id: 2,
@@ -49,6 +51,8 @@ const comments = ref([
         message:
           "Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam! Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam! Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam! Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam! Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam! Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam! Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam! Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam! Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam! Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam! Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam! Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam! Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam! Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam! Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam! Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam!",
         createdAt: "3 weeks ago",
+        likes: 0,
+        dislikes: 0,
       },
       {
         id: 2,
@@ -57,6 +61,8 @@ const comments = ref([
         message:
           "Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam!",
         createdAt: "3 weeks ago",
+        likes: 0,
+        dislikes: 0,
       },
       {
         id: 2,
@@ -65,8 +71,9 @@ const comments = ref([
         message:
           "Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam!",
         createdAt: "3 weeks ago",
+        likes: 0,
+        dislikes: 0,
       },
-      // More replies can be added here
     ],
   },
   {
