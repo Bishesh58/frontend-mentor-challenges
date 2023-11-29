@@ -6,6 +6,8 @@ const toggleExpand = ref(true);
 const isLiked = ref(false);
 const isDisliked = ref(false);
 const isComment = ref(false);
+const isEditing = ref(false);
+const messageInput = ref(props.comment.message);
 
 const hasReplies = computed(() => {
   return props.comment.replies && props.comment.replies.length > 0;
@@ -43,15 +45,30 @@ const toggleDislikes = (commentId) => {
 
 const toggleComments = () => {
   isComment.value = !isComment.value;
+  isEditing.value = false;
+};
+
+const showEdit = () => {
+  isEditing.value = true;
+  isComment.value = false;
 };
 
 const addComment = (parentId, commentObj) => {
-  console.log("from commentItem: ", parentId, commentObj);
   store.addComment(parentId, commentObj);
 };
 
 const deleteComment = (commentId) => {
   store.deleteComment(commentId);
+};
+
+const updateComment = (commentId) => {
+  store.updateComment(commentId, messageInput.value);
+  isEditing.value = false;
+};
+
+const cancelEditing = () => {
+  isEditing.value = false;
+  messageInput.value = props.comment.message;
 };
 </script>
 
@@ -69,7 +86,28 @@ const deleteComment = (commentId) => {
       </div>
       <!-- message -->
       <div class="flex gap-2 pl-10 py-4">
-        <p>
+        <div v-if="isEditing" class="flex flex-col items-end gap-2">
+          <textarea
+            v-model="messageInput"
+            class="h-20 w-96 border border-slate-800 rounded-md outline-none p-2 bg-inherit text-gray-600 overflow-y-auto max-h-80"
+            placeholder="Write.."
+          />
+          <div>
+            <button
+              @click="updateComment(props.comment.id)"
+              class="bg-blue-500 text-white text-xs px-2 py-1 uppercase rounded-md"
+            >
+              update
+            </button>
+            <button
+              @click="cancelEditing"
+              class="bg-blue-500 text-white text-xs px-2 py-1 uppercase rounded-md ml-2"
+            >
+              cancel
+            </button>
+          </div>
+        </div>
+        <p v-else>
           {{ props.comment.message }}
         </p>
       </div>
@@ -137,7 +175,8 @@ const deleteComment = (commentId) => {
         </div>
 
         <div
-          v-if="props.comment.authorId === 5"
+          v-if="props.comment.authorId === 5 && !isEditing"
+          @click="showEdit"
           class="hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 px-2"
         >
           <Icon name="material-symbols:edit-square-outline-sharp" size="16px" />

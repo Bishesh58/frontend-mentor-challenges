@@ -88,10 +88,10 @@ export const useCommentStore = defineStore("comments", () => {
     }
   };
 
-  const editComment = (commentId, updatedMessage) => {
-    const commentObj = comments.value.find((c) => c.id === commentId);
-    if (commentObj) {
-      commentObj.message = updatedMessage;
+  const updateComment = (commentId, updatedMessage) => {
+    const commentToUpdate = findCommentById(comments.value, commentId);
+    if (commentToUpdate) {
+      commentToUpdate.message = updatedMessage;
     }
   };
 
@@ -167,7 +167,7 @@ export const useCommentStore = defineStore("comments", () => {
   return {
     comments,
     addComment,
-    editComment,
+    updateComment,
     deleteComment,
     updateLikes,
     updateDislikes,

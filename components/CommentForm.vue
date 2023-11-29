@@ -5,7 +5,7 @@
     </div>
     <textarea
       v-model="commentInput"
-      class="h-20 w-96 border-2 border-slate-200 rounded-md outline-none p-2 bg-inherit text-gray-600 overflow-y-auto"
+      class="h-20 w-96 border border-slate-200 rounded-md outline-none p-2 bg-inherit text-gray-600 overflow-y-auto"
       placeholder="Write.."
     />
     <button
