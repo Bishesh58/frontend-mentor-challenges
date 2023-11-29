@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-start gap-4">
     <div>
-      <img src="/img/user/angela.webp" alt="" class="h-10 w-10" />
+      <img src="/img/user/rizky.webp" alt="" class="h-10 w-10" />
     </div>
     <textarea
       v-model="commentInput"
@@ -29,16 +29,17 @@ const handleSumbmit = () => {
     return;
   }
   const commentObj = {
-    id: Math.floor(Math.random() * 1000),
+    id: 101112,
     author: "John Doe",
-    profileImg: "/img/user/angela.webp",
+    authorId: 5,
+    profileImg: "/img/user/rizky.webp",
     message: commentInput.value,
     createdAt: moment(new Date()).fromNow(),
     likes: 44,
     dislikes: 55,
     replies: [],
   };
-  emit("addComment", commentObj);
+  emit("addComment", 101112, commentObj);
 
   // Reset
   commentInput.value = "";

@@ -1,7 +1,8 @@
 <script setup>
 const props = defineProps(["comment"]);
-const toggleExpand = ref(false);
-// console.log(props.comment);
+const store = useCommentStore();
+
+const toggleExpand = ref(true);
 const isLiked = ref(false);
 const isDisliked = ref(false);
 const isComment = ref(false);
@@ -10,12 +11,34 @@ const hasReplies = computed(() => {
   return props.comment.replies && props.comment.replies.length > 0;
 });
 
-const toggleLikes = () => {
+const toggleLikes = (commentId) => {
+  //toggle icon
   isLiked.value = !isLiked.value;
+  //if liked ++ else --
+  if (isLiked.value) {
+    store.updateLikes(commentId, "increment");
+    //user can't like & dislike at the same time
+    if (isDisliked.value) {
+      store.updateDislikes(commentId, "decrement");
+      isDisliked.value = false;
+    }
+  } else {
+    store.updateLikes(commentId, "decrement");
+  }
 };
 
-const toggleDislikes = () => {
+const toggleDislikes = (commentId) => {
   isDisliked.value = !isDisliked.value;
+  if (isDisliked.value) {
+    store.updateDislikes(commentId, "increment");
+    //user can't like & dislike at the same time
+    if (isLiked.value) {
+      store.updateLikes(commentId, "decrement");
+      isLiked.value = false;
+    }
+  } else {
+    store.updateDislikes(commentId, "decrement");
+  }
 };
 
 const toggleComments = () => {
@@ -25,6 +48,10 @@ const toggleComments = () => {
 const addComment = (commentObj) => {
   props.comment.replies.push(commentObj);
   toggleExpand.value = true;
+};
+
+const deleteComment = (commentId) => {
+  store.deleteComment(commentId);
 };
 </script>
 
@@ -70,7 +97,7 @@ const addComment = (commentObj) => {
 
         <div
           class="hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 px-2"
-          @click="toggleLikes"
+          @click="toggleLikes(props.comment.id)"
         >
           <Icon
             :name="isLiked ? 'icon-park-solid:like' : 'icon-park-outline:like'"
@@ -85,7 +112,7 @@ const addComment = (commentObj) => {
 
         <div
           class="hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 px-2"
-          @click="toggleDislikes"
+          @click="toggleDislikes(props.comment.id)"
         >
           <Icon
             :name="
@@ -107,6 +134,22 @@ const addComment = (commentObj) => {
         >
           <Icon name="iconamoon:comment-bold" size="16px" />
           <span class="text-xs font-light tracking-wider">comment</span>
+        </div>
+
+        <div
+          v-if="props.comment.authorId === 5"
+          class="hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 px-2"
+        >
+          <Icon name="material-symbols:edit-square-outline-sharp" size="16px" />
+          <span class="text-xs font-light tracking-wider"> edit</span>
+        </div>
+        <div
+          v-if="props.comment.authorId === 5"
+          @click="deleteComment(props.comment.id)"
+          class="hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 px-2"
+        >
+          <Icon name="material-symbols:delete" size="16px" />
+          <span class="text-xs font-light tracking-wider"> delete</span>
         </div>
         <div
           class="hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 px-2"

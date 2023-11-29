@@ -4,7 +4,7 @@
   >
     <div class="py-8">
       <CommentItem
-        v-for="comment in comments"
+        v-for="comment in store.comments"
         :key="comment.id"
         :comment="comment"
       />
@@ -14,60 +14,12 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { useCommentStore } from "@/stores/comment";
 
-const comments = ref([
-  {
-    id: 1,
-    author: "First John",
-    profileImg: "/img/user/angela.webp",
-    message:
-      "This is my first comment Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, reprehenderit! Quam debitis laborum ipsa provident commodi dolor recusandae. Officia natus dolor delectus ullam iusto ducimus ipsam nemo placeat itaque facilis!",
-    createdAt: "1 month ago",
-    likes: 4,
-    dislikes: 9,
-    replies: [
-      {
-        id: 2,
-        author: "Second John",
-        profileImg: "/img/user/anna.webp",
-        message:
-          "Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam!",
-        createdAt: "3 weeks ago",
-        likes: 3,
-        dislikes: 2,
-        replies: [
-          {
-            id: 3,
-            author: "Third John",
-            profileImg: "/img/user/anna.webp",
-            message:
-              "Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam!",
-            createdAt: "3 weeks ago",
-            likes: 8,
-            dislikes: 5,
-            replies: [
-              {
-                id: 4,
-                author: "Four John",
-                profileImg: "/img/user/anna.webp",
-                message:
-                  "Replying to John's comment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, quisquam!",
-                createdAt: "3 weeks ago",
-                likes: 86,
-                dislikes: 57,
-                replies: [],
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-]);
+const store = useCommentStore();
 
-const addComment = (commentObj) => {
-  comments.value.push(commentObj);
+const addComment = (commentId, commentObj) => {
+  store.addComment(commentId, commentObj);
 };
 
 const editComment = () => {};
