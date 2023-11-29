@@ -45,9 +45,9 @@ const toggleComments = () => {
   isComment.value = !isComment.value;
 };
 
-const addComment = (commentObj) => {
-  props.comment.replies.push(commentObj);
-  toggleExpand.value = true;
+const addComment = (parentId, commentObj) => {
+  console.log("from commentItem: ", parentId, commentObj);
+  store.addComment(parentId, commentObj);
 };
 
 const deleteComment = (commentId) => {
@@ -160,7 +160,13 @@ const deleteComment = (commentId) => {
       </div>
     </div>
     <!-- comment slot -->
-    <CommentForm v-if="isComment" class="pl-8 my-4" @addComment="addComment" />
+    <CommentForm
+      v-if="isComment"
+      class="pl-8 my-4"
+      @add-comment="addComment"
+      @toggle-comments="toggleComments"
+      :parentId="props.comment.id"
+    />
     <!-- nested -->
     <div class="pl-8 py-2" v-if="toggleExpand">
       <CommentItem

@@ -70,19 +70,21 @@ export const useCommentStore = defineStore("comments", () => {
     return null;
   };
 
-  const addComment = (commentId, commentObj) => {
-    const parentComment = findCommentById(comments.value, commentId);
-
-    if (parentComment) {
-      if (!parentComment.replies) {
-        // If replies array doesn't exist, create it
-        parentComment.replies = [];
-      }
-
-      parentComment.replies.push(commentObj);
-    } else {
-      // If parentComment is null, it's a top-level comment
+  const addComment = (parentId, commentObj) => {
+    if (parentId === null) {
+      // No parentId provided, add to the main comments array
       comments.value.push(commentObj);
+    } else {
+      // parentId provided, find the parent comment and add as a reply
+      const parentComment = findCommentById(comments.value, parentId);
+      if (parentComment) {
+        if (!parentComment.replies) {
+          parentComment.replies = [];
+        }
+        parentComment.replies.push(commentObj);
+      } else {
+        console.error("Parent comment not found");
+      }
     }
   };
 
@@ -94,7 +96,22 @@ export const useCommentStore = defineStore("comments", () => {
   };
 
   const deleteComment = (commentId) => {
-    comments.value = comments.value.filter((c) => c.id !== commentId);
+    const filterComments = (commentsArray, id) => {
+      return commentsArray.filter((comment) => {
+        if (comment.id === id) {
+          return false;
+        }
+
+        if (comment.replies) {
+          // Recursively filter nested replies
+          comment.replies = filterComments(comment.replies, id);
+        }
+
+        return true;
+      });
+    };
+    // Update the comments.value array with the filtered result
+    comments.value = filterComments(comments.value, commentId);
   };
 
   const updateLikes = (commentId, action) => {

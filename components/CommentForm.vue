@@ -21,8 +21,8 @@
 import moment from "moment";
 const commentInput = ref("");
 
-const { addComment } = defineProps(["addComment"]);
-const emit = defineEmits();
+const props = defineProps(["parentId"]);
+const emit = defineEmits(["addComment", "toggleComments"]);
 
 const handleSumbmit = () => {
   if (!commentInput.value.trim()) {
@@ -35,12 +35,13 @@ const handleSumbmit = () => {
     profileImg: "/img/user/rizky.webp",
     message: commentInput.value,
     createdAt: moment(new Date()).fromNow(),
-    likes: 44,
-    dislikes: 55,
+    likes: 0,
+    dislikes: 0,
     replies: [],
   };
-  emit("addComment", 101112, commentObj);
 
+  emit("addComment", props.parentId, commentObj);
+  emit("toggleComments");
   // Reset
   commentInput.value = "";
 };

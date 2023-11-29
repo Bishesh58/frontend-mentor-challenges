@@ -9,7 +9,7 @@
         :comment="comment"
       />
     </div>
-    <CommentForm @addComment="addComment" />
+    <CommentForm @add-comment="addComment" :parentId="null" />
   </main>
 </template>
 
@@ -18,8 +18,8 @@ import { useCommentStore } from "@/stores/comment";
 
 const store = useCommentStore();
 
-const addComment = (commentId, commentObj) => {
-  store.addComment(commentId, commentObj);
+const addComment = (parentId, commentObj) => {
+  store.addComment(parentId, commentObj);
 };
 
 const editComment = () => {};
