@@ -77,23 +77,33 @@ const handleShare = () => {
 </script>
 
 <template>
-  <div class="">
+  <div class="min-w-[400px]">
     <div
-      class="w-full ml-[20px]"
+      class="w-full ml-[10px] md:ml-[20px]"
       :class="{ 'border-l border-gray-500': hasReplies }"
     >
       <!-- top -->
-      <div class="flex items-center gap-2 -ml-[20px]">
-        <img :src="props.comment.profileImg" alt="" class="h-10 w-10 z-10" />
-        <p>{{ props.comment.author }}</p>
-        <p class="text-xs">{{ props.comment.createdAt }}</p>
+      <div class="flex items-center gap-2 -ml-[12px] md:-ml-[20px]">
+        <img
+          :src="props.comment.profileImg"
+          alt=""
+          class="h-6 w-6 md:h-10 md:w-10 z-10"
+        />
+        <p class="text-xs md:text-sm lg:text-base tracking-wider font-Karla">
+          {{ props.comment.author }}
+        </p>
+        <p class="text-xs text-gray-500 font-Karla">
+          {{ props.comment.createdAt }}
+        </p>
       </div>
       <!-- message -->
-      <div class="flex gap-2 pl-10 py-4">
+      <div
+        class="flex gap-2 p-2 pl-2.5 md:pl-10 md:py-4 tracking-wide text-sm md:text-base"
+      >
         <div v-if="isEditing" class="flex flex-col items-end gap-2">
           <textarea
             v-model="messageInput"
-            class="h-20 w-96 border border-slate-800 rounded-md outline-none p-2 bg-inherit text-gray-600 overflow-y-auto max-h-80"
+            class="h-20 w-full max-w-[500px] border border-slate-800 rounded-md outline-none p-2 bg-inherit text-gray-600 overflow-y-auto max-h-80"
             placeholder="Write.."
           />
           <div>
@@ -116,7 +126,7 @@ const handleShare = () => {
         </p>
       </div>
       <!-- bottom -->
-      <div class="flex items-center gap-1 relative">
+      <div class="flex items-center gap-2 relative flex-wrap">
         <div
           :class="{
             'absolute top-[50%] -left-[1px] bottom-0 border-l border-gray-950':
@@ -124,8 +134,8 @@ const handleShare = () => {
           }"
         ></div>
         <div
-          class="w-8"
-          :class="{ 'border-b border-gray-500': hasReplies }"
+          class="md:pl-4"
+          :class="{ 'border-b border-gray-500 w-4 md:w-8': hasReplies }"
         ></div>
         <div v-if="hasReplies" class="z-10">
           <div v-if="toggleExpand" @click="toggleExpand = !toggleExpand">
@@ -137,14 +147,14 @@ const handleShare = () => {
             @click="toggleExpand = !toggleExpand"
           >
             <Icon name="material-symbols:add-circle-outline" size="16px" />
-            <span class="text-xs font-light tracking-wider"
+            <span class="text-xs font-light tracking-wider hidden md:block"
               >{{ props.comment.replies.length }} more replies</span
             >
           </div>
         </div>
 
         <div
-          class="hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 px-2"
+          class="md:hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 md:px-2"
           @click="toggleLikes(props.comment.id)"
         >
           <Icon
@@ -159,7 +169,7 @@ const handleShare = () => {
         </div>
 
         <div
-          class="hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 px-2"
+          class="md:hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 md:px-2"
           @click="toggleDislikes(props.comment.id)"
         >
           <Icon
@@ -177,48 +187,56 @@ const handleShare = () => {
           >
         </div>
         <div
-          class="hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 px-2"
+          class="md:hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 md:px-2"
           @click="toggleComments"
         >
           <Icon name="iconamoon:comment-bold" size="16px" />
-          <span class="text-xs font-light tracking-wider">comment</span>
+          <span class="text-xs font-light tracking-wider hidden md:block"
+            >comment</span
+          >
         </div>
 
         <div
           v-if="props.comment.authorId === 5 && !isEditing"
           @click="showEdit"
-          class="hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 px-2"
+          class="md:hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 md:px-2"
         >
           <Icon name="material-symbols:edit-square-outline-sharp" size="16px" />
-          <span class="text-xs font-light tracking-wider"> edit</span>
+          <span class="text-xs font-light tracking-wider hidden md:block">
+            edit</span
+          >
         </div>
         <div
           v-if="props.comment.authorId === 5"
           @click="deleteComment(props.comment.id)"
-          class="hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 px-2"
+          class="md:hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 md:px-2"
         >
           <Icon name="material-symbols:delete" size="16px" />
-          <span class="text-xs font-light tracking-wider"> delete</span>
+          <span class="text-xs font-light tracking-wider hidden md:block">
+            delete</span
+          >
         </div>
         <div
           @click="handleShare"
-          class="hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 px-2"
+          class="md:hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 md:px-2"
         >
           <Icon name="ic:outline-ios-share" size="16px" />
-          <span class="text-xs font-light tracking-wider">share</span>
+          <span class="text-xs font-light tracking-wider hidden md:block"
+            >share</span
+          >
         </div>
       </div>
     </div>
     <!-- comment slot -->
     <CommentForm
       v-if="isComment"
-      class="pl-8 my-4"
+      class="pl-8 pr-4 my-4"
       @add-comment="addComment"
       @toggle-comments="toggleComments"
       :parentId="props.comment.id"
     />
     <!-- nested -->
-    <div class="pl-8 py-2" v-if="toggleExpand">
+    <div class="pl-8 py-2 my-4" v-if="toggleExpand">
       <CommentItem
         v-for="reply in comment.replies"
         :key="reply.id"
