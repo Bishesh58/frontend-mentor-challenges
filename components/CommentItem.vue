@@ -70,6 +70,10 @@ const cancelEditing = () => {
   isEditing.value = false;
   messageInput.value = props.comment.message;
 };
+
+const handleShare = () => {
+  alert("Work in progress..");
+};
 </script>
 
 <template>
@@ -112,7 +116,13 @@ const cancelEditing = () => {
         </p>
       </div>
       <!-- bottom -->
-      <div class="flex items-center gap-1">
+      <div class="flex items-center gap-1 relative">
+        <div
+          :class="{
+            'absolute top-[50%] -left-[1px] bottom-0 border-l border-gray-950':
+              hasReplies,
+          }"
+        ></div>
         <div
           class="w-8"
           :class="{ 'border-b border-gray-500': hasReplies }"
@@ -191,6 +201,7 @@ const cancelEditing = () => {
           <span class="text-xs font-light tracking-wider"> delete</span>
         </div>
         <div
+          @click="handleShare"
           class="hover:bg-gray-700 hover:cursor-pointer rounded-full flex items-center gap-1 h-8 px-2"
         >
           <Icon name="ic:outline-ios-share" size="16px" />
