@@ -84,11 +84,13 @@ const handleShare = () => {
     >
       <!-- top -->
       <div class="flex items-center gap-2 -ml-[12px] md:-ml-[20px]">
-        <img
-          :src="props.comment.profileImg"
-          alt=""
-          class="h-6 w-6 md:h-10 md:w-10 z-10"
-        />
+        <div class="h-6 w-6 md:h-10 md:w-10 z-10 relative">
+          <img :src="props.comment.profileImg" alt="" class="relative z-20" />
+          <div
+            v-if="props.comment.authorId !== 1"
+            class="absolute z-10 top-[50%] -left-[50%] bottom-0 w-6 ml-2 border-t border-gray-500"
+          ></div>
+        </div>
         <p class="text-xs md:text-sm lg:text-base tracking-wider font-Karla">
           {{ props.comment.author }}
         </p>
@@ -239,12 +241,16 @@ const handleShare = () => {
       :parentId="props.comment.id"
     />
     <!-- nested -->
-    <div class="pl-8 pt-2 mt-4" v-if="toggleExpand">
+    <div class="pl-8 pt-2 mt-4 relative" v-if="toggleExpand">
       <CommentItem
         v-for="reply in comment.replies"
         :key="reply.id"
         :comment="reply"
       />
+      <div
+        class="absolute -top-8 left-[10px] md:left-[20px] bottom-0"
+        :class="{ 'border-l border-gray-500': hasReplies }"
+      ></div>
     </div>
   </div>
 </template>

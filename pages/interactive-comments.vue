@@ -9,7 +9,7 @@
         :comment="comment"
       />
     </div>
-    <CommentForm @add-comment="addComment" :parentId="null" />
+    <CommentForm @add-comment="addComment" :parentId="343359" />
   </main>
 </template>
 
