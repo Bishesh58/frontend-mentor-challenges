@@ -22,6 +22,11 @@
 <script setup>
 const data = [
   {
+    title: "Interactive comments section",
+    imgURL: "/img/interactive-comment_preview.png",
+    link: "/interactive-comments",
+  },
+  {
     title: "Space tourism multi-page website",
     imgURL: "/img/space-tourism_preview.png",
     link: "/space-tourism/home",

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col md:flex-row items-start gap-2 md:gap-4 px-2 mt-2 text-xs md:text-sm lg:text-base"
+    class="flex flex-col md:flex-row items-start gap-2 md:gap-4 px-2 mt-2 md:mt-6 text-xs md:text-sm lg:text-base"
   >
     <div class="self-start h-6 w-6 md:h-10 md:w-10 z-10">
       <img src="/img/user/rizky.webp" alt="" />
@@ -12,7 +12,7 @@
     />
     <button
       @click="handleSumbmit"
-      class="bg-blue-500 text-white px-2 py-1 md:px-4 md:py-2 uppercase rounded-md"
+      class="bg-blue-500 text-white px-2 py-1 uppercase rounded-md text-sm"
     >
       send
     </button>
