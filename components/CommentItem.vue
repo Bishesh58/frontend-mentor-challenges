@@ -248,7 +248,7 @@ const handleShare = () => {
         :comment="reply"
       />
       <div
-        class="absolute -top-8 left-[10px] md:left-[20px] bottom-0"
+        class="absolute -top-8 left-[10px] md:left-[20px] bottom-8"
         :class="{ 'border-l border-gray-500': hasReplies }"
       ></div>
     </div>
