@@ -88,7 +88,7 @@ const handleShare = () => {
           <img :src="props.comment.profileImg" alt="" class="relative z-20" />
           <div
             v-if="props.comment.authorId !== 1"
-            class="absolute z-10 top-[50%] -left-[50%] bottom-0 w-6 ml-2 border-t border-gray-500"
+            class="absolute z-10 top-[50%] -left-[50%] bottom-0 w-8 md:w-6 -ml-2 md:ml-2 border-t border-gray-500"
           ></div>
         </div>
         <p class="text-xs md:text-sm lg:text-base tracking-wider font-Karla">
@@ -140,9 +140,9 @@ const handleShare = () => {
         ></div>
         <div
           class="md:pl-4"
-          :class="{ 'border-b border-gray-500 w-4 md:w-8': hasReplies }"
+          :class="{ 'border-b border-gray-500 w-2 md:w-4': hasReplies }"
         ></div>
-        <div v-if="hasReplies" class="z-10">
+        <div v-if="hasReplies" class="z-10 -ml-2">
           <div v-if="toggleExpand" @click="toggleExpand = !toggleExpand">
             <Icon name="ic:round-remove-circle-outline" size="16px" />
           </div>
