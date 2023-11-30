@@ -1,7 +1,7 @@
 export const useCommentStore = defineStore("comments", () => {
   const comments = ref([
     {
-      id: 131415,
+      id: 343359,
       author: "Angela Watt",
       authorId: 1,
       profileImg: "/img/user/angela.webp",
@@ -13,7 +13,7 @@ export const useCommentStore = defineStore("comments", () => {
 
       replies: [
         {
-          id: 121314,
+          id: 347166,
           author: "Mark Good",
           authorId: 2,
           profileImg: "/img/user/mark.webp",
@@ -25,7 +25,7 @@ export const useCommentStore = defineStore("comments", () => {
 
           replies: [
             {
-              id: 111213,
+              id: 373234,
               author: "Kim Kart",
               authorId: 3,
               profileImg: "/img/user/kimberly.webp",
@@ -36,7 +36,7 @@ export const useCommentStore = defineStore("comments", () => {
               dislikes: 5,
               replies: [
                 {
-                  id: 141516,
+                  id: 379581,
                   author: "Mark Good",
                   authorId: 2,
                   profileImg: "/img/user/mark.webp",

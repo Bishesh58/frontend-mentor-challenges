@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col md:flex-row items-start gap-2 md:gap-4 px-2 text-xs md:text-sm lg:text-base"
+    class="flex flex-col md:flex-row items-start gap-2 md:gap-4 px-2 mt-2 text-xs md:text-sm lg:text-base"
   >
     <div class="self-start h-6 w-6 md:h-10 md:w-10 z-10">
       <img src="/img/user/rizky.webp" alt="" />
@@ -31,7 +31,7 @@ const handleSumbmit = () => {
     return;
   }
   const commentObj = {
-    id: 101112,
+    id: (Date.now() + Math.floor(Math.random() * 1000)) % 1000000,
     author: "John Doe",
     authorId: 5,
     profileImg: "/img/user/rizky.webp",

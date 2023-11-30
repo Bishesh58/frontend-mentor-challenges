@@ -98,15 +98,18 @@ const handleShare = () => {
       </div>
       <!-- message -->
       <div
-        class="flex gap-2 p-2 pl-2.5 md:pl-10 md:py-4 tracking-wide text-sm md:text-base"
+        class="flex gap-2 p-2 pl-2.5 md:pl-10 md:py-2 tracking-wide text-sm md:text-base"
       >
-        <div v-if="isEditing" class="flex flex-col items-end gap-2">
+        <div
+          v-if="isEditing"
+          class="flex flex-col items-start gap-2 w-full max-w-[500px]"
+        >
           <textarea
             v-model="messageInput"
-            class="h-20 w-full max-w-[500px] border border-slate-800 rounded-md outline-none p-2 bg-inherit text-gray-600 overflow-y-auto max-h-80"
+            class="h-20 w-full border border-slate-800 rounded-md outline-none p-2 bg-inherit text-gray-600 overflow-y-auto max-h-80"
             placeholder="Write.."
           />
-          <div>
+          <div class="self-end">
             <button
               @click="updateComment(props.comment.id)"
               class="bg-blue-500 text-white text-xs px-2 py-1 uppercase rounded-md"
@@ -236,7 +239,7 @@ const handleShare = () => {
       :parentId="props.comment.id"
     />
     <!-- nested -->
-    <div class="pl-8 py-2 my-4" v-if="toggleExpand">
+    <div class="pl-8 pt-2 mt-4" v-if="toggleExpand">
       <CommentItem
         v-for="reply in comment.replies"
         :key="reply.id"
