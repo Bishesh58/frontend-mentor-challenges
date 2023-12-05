@@ -40,6 +40,7 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "@nuxt/ui",
     "@pinia/nuxt",
+    "nuxt-swiper",
   ],
   build: {
     transpile: ["vue-toastification"],
