@@ -22,7 +22,7 @@
               <Icon name="mdi:music" color="#727EA4" size="1.5em" />
             </div>
             <div class="px-4">
-              <p class="font-semibold">Annual Plan</p>
+              <p class="font-semibold text-[#111c2d]">Annual Plan</p>
               <p class="text-[#9ea4b1] text-[15px]">$59.99/year</p>
             </div>
           </div>
