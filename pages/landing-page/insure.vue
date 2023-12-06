@@ -1,5 +1,5 @@
 <template>
-  <div class="font-Karla relative">
+  <div class="font-Karla relative bg-white text-gray-900">
     <!-- header -->
     <header
       class="max-w-screen-xl mx-auto flex justify-between items-center p-5"
@@ -128,7 +128,9 @@
     <!-- features -->
     <main class="max-w-7xl mx-auto mt-8 md:mt-20 py-8 md:py-10 lg:py-20">
       <section>
-        <div class="flex flex-col max-md:items-center max-md:justify-center p-8">
+        <div
+          class="flex flex-col max-md:items-center max-md:justify-center p-8"
+        >
           <div class="w-32 max-lg:self-center border-b border-[#dbd0e2]"></div>
           <h1
             class="py-10 max-lg:self-center font-serif text-5xl leading-[0.8]"
