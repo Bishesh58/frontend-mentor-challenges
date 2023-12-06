@@ -49,7 +49,7 @@
             id="email"
             type="email"
             placeholder="email@company.com "
-            class="py-2.5 px-4 rounded-md border border-slate-300 w-full text-sm"
+            class="py-2.5 px-4 rounded-md border border-slate-300 w-full text-sm bg-white"
             @focus="emailError = false"
           />
         </div>
