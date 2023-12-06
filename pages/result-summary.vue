@@ -27,7 +27,7 @@
       </div>
       <!-- card right -->
       <div class="flex-1 px-6 sm:p-6 flex-col justify-between">
-        <h1 class="my-5 text-2xl">Summary</h1>
+        <h1 class="my-5 text-2xl text-[#303B59] ">Summary</h1>
         <div class="p-4 rounded-md bg-[#FFF6F5] flex justify-between my-4">
           <div class="flex gap-2">
             <img src="/svg/icon-reaction.svg" alt="" class="" />
