@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#FAFAFA]">
+  <div class="bg-[#FAFAFA] text-gray-900">
     <div class="min-h-screen max-w-7xl bg-[#FAFAFA] mx-auto font-Poppins">
       <!-- header -->
       <div
@@ -191,7 +191,7 @@
       </div>
 
       <!-- hero -->
-      <div class="flex max-md:flex-col-reverse max-md:py-4 max-md:px-0 p-16">
+      <div class="flex max-md:flex-col-reverse max-md:py-4 max-md:px-0 p-16 text-gray-900">
         <!-- left -->
         <div
           class="flex-1 flex flex-col max-md:p-0 max-md:pt-8 px-8 pt-20 max-md:text-center max-md:items-center"
