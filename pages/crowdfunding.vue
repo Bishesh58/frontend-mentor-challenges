@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#FAFAFA] font-Commissioner relative">
+  <div class="bg-[#FAFAFA] text-gray-900 font-Commissioner relative">
     <div
       class="bg-[url('/img/image-hero-mobile.jpg')] md:bg-[url('/img/image-hero-desktop.jpg')] h-80 bg-no-repeat bg-cover bg-center md:bg-bottom"
     >
