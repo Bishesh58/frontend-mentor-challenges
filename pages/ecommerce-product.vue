@@ -50,13 +50,14 @@
       </div>
     </header>
     <main class="max-w-7xl mx-auto p-3 md:p-6 lg:p-12">
-      <div>
-        <div class="w-[50%]">
+      <div class="grid grid-cols-2">
+        <div class="">
           <Swiper
             :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperThumbs]"
             :slides-per-view="1"
             :loop="true"
             :effect="'creative'"
+            :thumbs="{ swiper: thumbsSwiper }"
             :autoplay="{
               delay: 8000,
               disableOnInteraction: true,
@@ -70,41 +71,37 @@
                 translate: ['100%', 0, 0],
               },
             }"
-            class="w-[450px] h-[450px]"
-            @swiper="onMainSwiperInit"
+            class="w-[450px] h-[450px] rounded-xl"
           >
             <SwiperSlide v-for="(image, index) in productImages" :key="index">
-              <img :src="image" alt="" class="h-96" />
+              <img :src="image" alt="" class="rounded-xl" />
             </SwiperSlide>
-            <template #pagination>
-              <SwiperPagination />
-            </template>
           </Swiper>
           <Swiper
             :modules="[SwiperThumbs]"
-            :slides-per-view="3"
-            :space-between="10"
+            :slides-per-view="4"
+            :loop="true"
             :free-mode="true"
+            :space-between="20"
             :watchSlidesVisibility="true"
             :watchSlidesProgress="true"
-            style="margin-top: 20px"
+            class="mt-6 w-[450px] h-24"
+            @swiper="setThumbsSwiper"
           >
             <SwiperSlide
               v-for="(image, index) in productImages"
               :key="index"
-              class="border-red-400 rounded-lg"
+              class="flex justify-between"
             >
               <img
                 :src="image"
                 alt=""
-                @click="handleThumbClick(index)"
-                class="h-40"
-                :class="{ 'active-thumb': thumbActiveIndex === index }"
+                class="rounded-md w-full h-full hover:opacity-50 hover:cursor-pointer"
               />
             </SwiperSlide>
           </Swiper>
         </div>
-        <div class="inline">
+        <div class="">
           <p>sneaker company</p>
           <h1>Fall Limited Edition Sneakers</h1>
           <p>
@@ -139,28 +136,20 @@ const productImages = ref([
   "/ecommerce/image-product-1.jpg",
   "/ecommerce/image-product-2.jpg",
   "/ecommerce/image-product-3.jpg",
+  "/ecommerce/image-product-4.jpg",
 ]);
 
-const thumbActiveIndex = ref(0);
+const thumbsSwiper = ref(null);
 
-let mainSwiper = null;
-
-const onMainSwiperInit = (swiper) => {
-  mainSwiper = swiper;
-};
-
-const handleThumbClick = (index) => {
-  thumbActiveIndex.value = index;
-  if (mainSwiper) {
-    mainSwiper.slideTo(index);
-  }
+const setThumbsSwiper = (swiper) => {
+  thumbsSwiper.value = swiper;
 };
 </script>
 
 <style scoped>
-.active-thumb {
-  border: 2px solid blue; /* Add a border or any visual indicator for the active thumbnail */
-  opacity: 0.5;
-  border-radius: 24px;
+.swiper-slide-thumb-active {
+  border: 2px solid #ff6f00;
+  opacity: 50%;
+  border-radius: 8px;
 }
 </style>
