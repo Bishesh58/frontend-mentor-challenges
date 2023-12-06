@@ -49,8 +49,77 @@
         </div>
       </div>
     </header>
-    <main class="max-w-7xl mx-auto px-3 md:px-4 lg:px-6">
-      <slot />
+    <main class="max-w-7xl mx-auto p-3 md:p-6 lg:p-12">
+      <div>
+        <div class="w-[50%]">
+          <Swiper
+            :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperThumbs]"
+            :slides-per-view="1"
+            :loop="true"
+            :effect="'creative'"
+            :autoplay="{
+              delay: 8000,
+              disableOnInteraction: true,
+            }"
+            :creative-effect="{
+              prev: {
+                shadow: false,
+                translate: ['-20%', 0, -1],
+              },
+              next: {
+                translate: ['100%', 0, 0],
+              },
+            }"
+            class="w-[450px] h-[450px]"
+            @swiper="onMainSwiperInit"
+          >
+            <SwiperSlide v-for="(image, index) in productImages" :key="index">
+              <img :src="image" alt="" class="h-96" />
+            </SwiperSlide>
+            <template #pagination>
+              <SwiperPagination />
+            </template>
+          </Swiper>
+          <Swiper
+            :modules="[SwiperThumbs]"
+            :slides-per-view="3"
+            :space-between="10"
+            :free-mode="true"
+            :watchSlidesVisibility="true"
+            :watchSlidesProgress="true"
+            style="margin-top: 20px"
+          >
+            <SwiperSlide
+              v-for="(image, index) in productImages"
+              :key="index"
+              class="border-red-400 rounded-lg"
+            >
+              <img
+                :src="image"
+                alt=""
+                @click="handleThumbClick(index)"
+                class="h-40"
+                :class="{ 'active-thumb': thumbActiveIndex === index }"
+              />
+            </SwiperSlide>
+          </Swiper>
+        </div>
+        <div class="inline">
+          <p>sneaker company</p>
+          <h1>Fall Limited Edition Sneakers</h1>
+          <p>
+            These low-profile sneakers are your prefect casual wear companion.
+          </p>
+          <div>
+            <p>125.00 <span>50%</span></p>
+            <p>250.00</p>
+          </div>
+          <div>
+            <div>icon 0 icon</div>
+            <button>Add to cart</button>
+          </div>
+        </div>
+      </div>
     </main>
   </div>
 </template>
@@ -65,6 +134,33 @@ const toggleMobileMenu = () => {
 const closeMobileMenu = () => {
   isMobileMenuOpen.value = false;
 };
+
+const productImages = ref([
+  "/ecommerce/image-product-1.jpg",
+  "/ecommerce/image-product-2.jpg",
+  "/ecommerce/image-product-3.jpg",
+]);
+
+const thumbActiveIndex = ref(0);
+
+let mainSwiper = null;
+
+const onMainSwiperInit = (swiper) => {
+  mainSwiper = swiper;
+};
+
+const handleThumbClick = (index) => {
+  thumbActiveIndex.value = index;
+  if (mainSwiper) {
+    mainSwiper.slideTo(index);
+  }
+};
 </script>
 
-<style scoped></style>
+<style scoped>
+.active-thumb {
+  border: 2px solid blue; /* Add a border or any visual indicator for the active thumbnail */
+  opacity: 0.5;
+  border-radius: 24px;
+}
+</style>
