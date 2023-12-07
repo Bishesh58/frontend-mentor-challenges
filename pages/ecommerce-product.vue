@@ -8,27 +8,27 @@
             <li
               class="relative hover:text-black hover:cursor-pointer tracking-wide hover:after:content-[''] hover:after:border-b-2 hover:after:border-b-[#ff7d1a] hover:after:absolute hover:after:top-[55px] hover:after:left-0 hover:after:bottom-0 hover:after:right-0 hover:after:duration-150 hover:after:transition-all"
             >
-              <NuxtLink to="/men/"> collections </NuxtLink>
+              <NuxtLink to="ecommerce-product"> collections </NuxtLink>
             </li>
             <li
               class="relative hover:text-black hover:cursor-pointer tracking-wide hover:after:content-[''] hover:after:border-b-2 hover:after:border-b-[#ff7d1a] hover:after:absolute hover:after:top-[55px] hover:after:left-0 hover:after:bottom-0 hover:after:right-0 hover:after:duration-150 hover:after:transition-all"
             >
-              <NuxtLink to="/women/"> men </NuxtLink>
+              <NuxtLink to="ecommerce-product"> men </NuxtLink>
             </li>
             <li
               class="relative hover:text-black hover:cursor-pointer tracking-wide hover:after:content-[''] hover:after:border-b-2 hover:after:border-b-[#ff7d1a] hover:after:absolute hover:after:top-[55px] hover:after:left-0 hover:after:bottom-0 hover:after:right-0 hover:after:duration-150 hover:after:transition-all"
             >
-              <NuxtLink to="/collections/"> women </NuxtLink>
+              <NuxtLink to="ecommerce-product"> women </NuxtLink>
             </li>
             <li
               class="relative hover:text-black hover:cursor-pointer tracking-wide hover:after:content-[''] hover:after:border-b-2 hover:after:border-b-[#ff7d1a] hover:after:absolute hover:after:top-[55px] hover:after:left-0 hover:after:bottom-0 hover:after:right-0 hover:after:duration-150 hover:after:transition-all"
             >
-              <NuxtLink to="/about/"> about </NuxtLink>
+              <NuxtLink to="ecommerce-product"> about </NuxtLink>
             </li>
             <li
               class="relative hover:text-black hover:cursor-pointer tracking-wide hover:after:content-[''] hover:after:border-b-2 hover:after:border-b-[#ff7d1a] hover:after:absolute hover:after:top-[55px] hover:after:left-0 hover:after:bottom-0 hover:after:right-0 hover:after:duration-150 hover:after:transition-all"
             >
-              <NuxtLink to="/contact/"> contact </NuxtLink>
+              <NuxtLink to="ecommerce-product"> contact </NuxtLink>
             </li>
           </ul>
         </div>
@@ -157,6 +157,7 @@
     :isLightBox="isLightBox"
     @close="closeLightBox"
   />
+  <Cart />
 </template>
 
 <script setup>
