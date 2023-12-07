@@ -196,7 +196,7 @@
     </main>
   </div>
   <ProductLightBox
-    :productImages="productImages"
+    :productImages="store.products[0].images"
     :isLightBox="isLightBox"
     @close="closeLightBox"
     class="hidden md:block"
@@ -218,12 +218,7 @@ const toast = useToast();
 const prevButtonRef = ref(null);
 const nextButtonRef = ref(null);
 
-const productImages = ref([
-  "/ecommerce/image-product-1.jpg",
-  "/ecommerce/image-product-2.jpg",
-  "/ecommerce/image-product-3.jpg",
-  "/ecommerce/image-product-4.jpg",
-]);
+
 const isLightBox = ref(false);
 const isCartOpen = ref(false);
 const quantity = ref(1);
