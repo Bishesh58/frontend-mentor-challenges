@@ -51,7 +51,7 @@
     </header>
     <main class="max-w-7xl mx-auto p-3 md:p-6 lg:p-12">
       <div class="grid grid-cols-2">
-        <div class="">
+        <div>
           <Swiper
             :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperThumbs]"
             :slides-per-view="1"
@@ -59,7 +59,7 @@
             :effect="'creative'"
             :thumbs="{ swiper: thumbsSwiper }"
             :autoplay="{
-              delay: 8000,
+              delay: 5000,
               disableOnInteraction: true,
             }"
             :creative-effect="{
@@ -74,7 +74,12 @@
             class="w-[450px] h-[450px] rounded-xl"
           >
             <SwiperSlide v-for="(image, index) in productImages" :key="index">
-              <img :src="image" alt="" class="rounded-xl" />
+              <img
+                :src="image"
+                alt=""
+                class="rounded-xl hover:cursor-pointer"
+                @click="openLightBox"
+              />
             </SwiperSlide>
           </Swiper>
           <Swiper
@@ -101,27 +106,62 @@
             </SwiperSlide>
           </Swiper>
         </div>
-        <div class="">
-          <p>sneaker company</p>
-          <h1>Fall Limited Edition Sneakers</h1>
-          <p>
-            These low-profile sneakers are your prefect casual wear companion.
+        <div class="flex flex-col py-8">
+          <p class="text-[#ff7d1a] uppercase tracking-wider">sneaker company</p>
+          <h1 class="text-gray-800 text-4xl pt-4">
+            Fall Limited Edition Sneakers
+          </h1>
+          <p class="text-gray-500 py-8 tracking-wider font-light">
+            These low-profile sneakers are your perfect casual wear companion.
+            Featuring a durable rubber outer sole, they’ll withstand everything
+            the weather can offer.
           </p>
           <div>
-            <p>125.00 <span>50%</span></p>
-            <p>250.00</p>
+            <div class="flex items-center">
+              <span class="font-bold text-2xl text-gray-800"> $125.00</span>
+              <span
+                class="mx-4 text-sm font-semibold text-[#ff7d1a] px-2 py-1 rounded-md bg-[#ff7d1a28]"
+                >50%</span
+              >
+            </div>
+            <p class="line-through text-gray-400 py-2">$250.00</p>
           </div>
-          <div>
-            <div>icon 0 icon</div>
-            <button>Add to cart</button>
+          <div class="flex items-center gap-4 py-4">
+            <div
+              class="bg-slate-100 rounded-md flex gap-2 justify-between items-center w-fit text-[#ff7d1a]"
+            >
+              <Icon
+                name="mdi:minus"
+                size="24px"
+                class="w-10 hover:cursor-pointer hover:scale-125"
+              />
+              <p class="text-black py-2.5 px-2 font-bold">000</p>
+              <Icon
+                name="mdi:add"
+                size="24px"
+                class="w-10 hover:cursor-pointer hover:scale-125"
+              />
+            </div>
+            <button
+              class="px-8 py-2.5 bg-[#ff7d1a] text-white rounded-md hover:shadow-lg hover:bg-opacity-70"
+            >
+              Add to cart
+            </button>
           </div>
         </div>
       </div>
     </main>
   </div>
+  <ProductLightBox
+    :productImages="productImages"
+    :isLightBox="isLightBox"
+    @close="closeLightBox"
+  />
 </template>
 
 <script setup>
+import { toastInjectionKey } from "vue-toastification";
+
 const isMobileMenuOpen = ref(false);
 
 const toggleMobileMenu = () => {
@@ -138,6 +178,16 @@ const productImages = ref([
   "/ecommerce/image-product-3.jpg",
   "/ecommerce/image-product-4.jpg",
 ]);
+const isLightBox = ref(false);
+
+const openLightBox = () => {
+  isLightBox.value = true;
+};
+
+const closeLightBox = () => {
+  isLightBox.value = false;
+  console.log("listened..");
+};
 
 const thumbsSwiper = ref(null);
 
