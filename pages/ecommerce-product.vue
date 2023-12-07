@@ -88,7 +88,10 @@
             }"
             class="md:w-[450px] h-[320px] md:h-[450px] md:rounded-xl"
           >
-            <SwiperSlide v-for="(image, index) in productImages" :key="index">
+            <SwiperSlide
+              v-for="(image, index) in store.products[0].images"
+              :key="index"
+            >
               <img
                 :src="image"
                 alt=""
@@ -122,7 +125,7 @@
             @swiper="setThumbsSwiper"
           >
             <SwiperSlide
-              v-for="(image, index) in productImages"
+              v-for="(image, index) in store.products[0].images"
               :key="index"
               class="flex justify-between"
             >
@@ -138,26 +141,25 @@
           <p
             class="text-[#ff7d1a] uppercase tracking-wider text-sm md:text-base"
           >
-            sneaker company
+            {{ store.products[0].brand }}
           </p>
           <h1 class="text-gray-800 text-xl md:text-3xl lg:text-4xl pt-4">
-            Fall Limited Edition Sneakers
+            {{ store.products[0].title }}
           </h1>
           <p
             class="text-gray-500 py-4 sm:py-6 md:py-8 tracking-wider font-light text-xs md:text-sm lg:text-base"
           >
-            These low-profile sneakers are your perfect casual wear companion.
-            Featuring a durable rubber outer sole, they’ll withstand everything
-            the weather can offer.
+            {{ store.products[0].description }}
           </p>
           <div class="max-sm:flex justify-between">
             <div class="flex items-center">
               <span class="font-bold text-xl md:text-2xl text-gray-800">
-                $125.00</span
+                ${{ store.products[0].price }}</span
               >
               <span
                 class="mx-4 text-xs md:text-sm font-semibold text-[#ff7d1a] px-2 py-1 rounded-md bg-[#ff7d1a28]"
-                >50%</span
+              >
+                {{ store.products[0].discount }}%</span
               >
             </div>
             <p class="line-through text-gray-400 py-2">$250.00</p>
@@ -206,15 +208,9 @@
 import { useProductStore } from "@/stores/product";
 import { useToast, POSITION } from "vue-toastification";
 
-const isMobileMenuOpen = ref(false);
-
-const toggleMobileMenu = () => {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value;
-};
-
-const closeMobileMenu = () => {
-  isMobileMenuOpen.value = false;
-};
+useHead({
+  title: "Frontend Mentor | E-commerce product page",
+});
 
 const store = useProductStore();
 const toast = useToast();

@@ -22,6 +22,11 @@
 <script setup>
 const data = [
   {
+    title: "E-commerce product page",
+    imgURL: "/img/ecommerce-product_preview.png",
+    link: "/ecommerce-product",
+  },
+  {
     title: "Interactive comments section",
     imgURL: "/img/interactive-comment_preview.png",
     link: "/interactive-comments",
