@@ -55,13 +55,22 @@
         </div>
       </div>
     </header>
-    <main class="max-w-7xl mx-auto p-3 md:p-6 lg:p-12">
-      <div class="grid grid-cols-2">
+    <main class="max-w-7xl mx-auto md:py-6 lg:py-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2">
         <div>
           <Swiper
-            :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperThumbs]"
+            :modules="[
+              SwiperAutoplay,
+              SwiperEffectCreative,
+              SwiperThumbs,
+              SwiperNavigation,
+            ]"
             :slides-per-view="1"
             :loop="true"
+            :navigation="{
+              prevEl: prevButtonRef,
+              nextEl: nextButtonRef,
+            }"
             :effect="'creative'"
             :thumbs="{ swiper: thumbsSwiper }"
             :autoplay="{
@@ -77,17 +86,30 @@
                 translate: ['100%', 0, 0],
               },
             }"
-            class="w-[450px] h-[450px] rounded-xl"
+            class="md:w-[450px] h-[320px] md:h-[450px] md:rounded-xl"
           >
             <SwiperSlide v-for="(image, index) in productImages" :key="index">
               <img
                 :src="image"
                 alt=""
-                class="rounded-xl hover:cursor-pointer"
+                class="md:rounded-xl hover:cursor-pointer"
                 @click="openLightBox"
               />
             </SwiperSlide>
           </Swiper>
+          <!-- Custom Navigation Buttons -->
+          <button
+            ref="prevButtonRef"
+            class="md:hidden absolute z-40 left-4 top-60 bg-white text-gray-700 hover:text-[#ff7d1a] h-10 w-10 rounded-full grid place-items-center"
+          >
+            <Icon name="ion:chevron-left" size="18px" />
+          </button>
+          <button
+            ref="nextButtonRef"
+            class="md:hidden absolute z-40 right-4 top-60 bg-white text-gray-700 hover:text-[#ff7d1a] h-10 w-10 rounded-full grid place-items-center"
+          >
+            <Icon name="ion:chevron-right" size="18px" />
+          </button>
           <Swiper
             :modules="[SwiperThumbs]"
             :slides-per-view="4"
@@ -96,7 +118,7 @@
             :space-between="20"
             :watchSlidesVisibility="true"
             :watchSlidesProgress="true"
-            class="mt-6 w-[450px] h-24"
+            class="mt-6 w-[450px] h-24 !hidden sm:!block"
             @swiper="setThumbsSwiper"
           >
             <SwiperSlide
@@ -112,29 +134,37 @@
             </SwiperSlide>
           </Swiper>
         </div>
-        <div class="flex flex-col py-8">
-          <p class="text-[#ff7d1a] uppercase tracking-wider">sneaker company</p>
-          <h1 class="text-gray-800 text-4xl pt-4">
+        <div class="flex flex-col py-8 p-4 md:p-10 lg:p-12">
+          <p
+            class="text-[#ff7d1a] uppercase tracking-wider text-sm md:text-base"
+          >
+            sneaker company
+          </p>
+          <h1 class="text-gray-800 text-xl md:text-3xl lg:text-4xl pt-4">
             Fall Limited Edition Sneakers
           </h1>
-          <p class="text-gray-500 py-8 tracking-wider font-light">
+          <p
+            class="text-gray-500 py-4 sm:py-6 md:py-8 tracking-wider font-light text-xs md:text-sm lg:text-base"
+          >
             These low-profile sneakers are your perfect casual wear companion.
             Featuring a durable rubber outer sole, they’ll withstand everything
             the weather can offer.
           </p>
-          <div>
+          <div class="max-sm:flex justify-between">
             <div class="flex items-center">
-              <span class="font-bold text-2xl text-gray-800"> $125.00</span>
+              <span class="font-bold text-xl md:text-2xl text-gray-800">
+                $125.00</span
+              >
               <span
-                class="mx-4 text-sm font-semibold text-[#ff7d1a] px-2 py-1 rounded-md bg-[#ff7d1a28]"
+                class="mx-4 text-xs md:text-sm font-semibold text-[#ff7d1a] px-2 py-1 rounded-md bg-[#ff7d1a28]"
                 >50%</span
               >
             </div>
             <p class="line-through text-gray-400 py-2">$250.00</p>
           </div>
-          <div class="flex items-center gap-4 py-4">
+          <div class="flex-col flex sm:flex-row items-center gap-4 py-4">
             <div
-              class="bg-slate-100 rounded-md flex gap-2 justify-between items-center w-fit text-[#ff7d1a]"
+              class="bg-slate-100 rounded-md flex gap-2 justify-between items-center w-fit max-sm:w-full text-[#ff7d1a]"
             >
               <Icon
                 name="mdi:minus"
@@ -153,7 +183,7 @@
               />
             </div>
             <button
-              class="px-8 py-2.5 bg-[#ff7d1a] text-white rounded-md hover:shadow-lg hover:bg-opacity-70"
+              class="px-8 py-2.5 bg-[#ff7d1a] text-white rounded-md hover:shadow-lg hover:bg-opacity-70 max-sm:w-full"
               @click="addToCart(12345)"
             >
               Add to cart
@@ -167,6 +197,7 @@
     :productImages="productImages"
     :isLightBox="isLightBox"
     @close="closeLightBox"
+    class="hidden md:block"
   />
   <Cart v-if="isCartOpen" @close="hideCart" />
 </template>
@@ -187,6 +218,9 @@ const closeMobileMenu = () => {
 
 const store = useProductStore();
 const toast = useToast();
+
+const prevButtonRef = ref(null);
+const nextButtonRef = ref(null);
 
 const productImages = ref([
   "/ecommerce/image-product-1.jpg",
@@ -214,6 +248,12 @@ const setThumbsSwiper = (swiper) => {
 };
 
 const showCart = () => {
+  if (!store.cart.length > 0) {
+    toast.info("Your cart is currently empty.", {
+      position: POSITION.BOTTOM_RIGHT,
+    });
+    return;
+  }
   isCartOpen.value = true;
 };
 

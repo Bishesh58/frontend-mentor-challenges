@@ -1,8 +1,6 @@
 <template>
   <div v-if="isLightBox" class="absolute inset-0 bg-black/80 min-h-screen z-20">
-    <main
-      class="max-w-7xl mx-auto p-3 md:p-6 lg:p-12 flex items-center justify-center"
-    >
+    <main class="max-w-7xl mx-auto p-20 flex items-center justify-center">
       <div class="relative">
         <Swiper
           :modules="[
@@ -32,7 +30,7 @@
               translate: ['100%', 0, 0],
             },
           }"
-          class="w-[450px] h-[450px] rounded-xl"
+          class="w-[600px] h-[450px] rounded-xl"
         >
           <SwiperSlide v-for="(image, index) in productImages" :key="index">
             <img :src="image" alt="" class="rounded-xl" />
@@ -109,13 +107,5 @@ const close = () => {
   border: 2px solid #ff6f00;
   opacity: 50%;
   border-radius: 8px;
-}
-
-.custom-prev-button {
-  color: red;
-}
-
-.custom-next-button {
-  color: red;
 }
 </style>

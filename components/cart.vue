@@ -45,7 +45,7 @@
             </tbody>
           </table>
         </div>
-        <div class="border-t py-6 rounded-md">
+        <div class="border-t py-6 px-4 rounded-md">
           <div class="flex items-center justify-between py-4">
             <p class="capitalize">subtotal:</p>
             <p>${{ store.cart[0].price }}</p>
@@ -54,9 +54,14 @@
             class="py-2.5 px-8 w-full rounded-md bg-[#ff7d1a] text-white uppercase font-semibold tracking-wide hover:bg-opacity-70 hover:shadow-md hover:cursor-pointer"
             @click="handleCheckout"
           >
+            <span>
+              <Icon
+                name="material-symbols:shopping-cart-outline-rounded"
+                size="24px"
+                class="mx-2"
+            /></span>
             checkout
           </button>
-          
         </div>
       </div>
     </div>
