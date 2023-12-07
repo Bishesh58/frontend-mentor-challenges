@@ -25,8 +25,10 @@ export const useProductStore = defineStore("products", () => {
     //find the id
     const productToAdd = products.value.find((p) => p.id === id);
 
-    //add to cart if product not already on cart
-    if (productToAdd && !cart.value.find((item) => item.id === id)) {
+    if (productToAdd) {
+      if (cart.value.length > 0) {
+        cart.value = [];
+      }
       cart.value.push({
         id: productToAdd.id,
         title: productToAdd.title,
@@ -47,10 +49,15 @@ export const useProductStore = defineStore("products", () => {
     }
   };
 
+  const emptyCart = () => {
+    cart.value = [];
+  };
+
   return {
     products,
     cart,
     addToCart,
     removeFromCart,
+    emptyCart,
   };
 });

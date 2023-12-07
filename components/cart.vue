@@ -39,7 +39,7 @@
                   <p>{{ item.quantity }}</p>
                 </td>
                 <td class="py-2 px-4 border text-right">
-                  <p>{{ item.price }}</p>
+                  <p>${{ item.price }}</p>
                 </td>
               </tr>
             </tbody>
@@ -48,14 +48,15 @@
         <div class="border-t py-6 rounded-md">
           <div class="flex items-center justify-between py-4">
             <p class="capitalize">subtotal:</p>
-            <p>{{ item.price }}</p>
+            <p>${{ store.cart[0].price }}</p>
           </div>
           <button
             class="py-2.5 px-8 w-full rounded-md bg-[#ff7d1a] text-white uppercase font-semibold tracking-wide hover:bg-opacity-70 hover:shadow-md hover:cursor-pointer"
-            @click="$emit('close')"
+            @click="handleCheckout"
           >
             checkout
           </button>
+          
         </div>
       </div>
     </div>
@@ -64,9 +65,21 @@
 
 <script setup>
 import { useProductStore } from "@/stores/product";
-const store = useProductStore();
+import { useToast, POSITION } from "vue-toastification";
 
-defineEmits(["close"]);
+const store = useProductStore();
+const toast = useToast();
+
+const emit = defineEmits(["close"]);
+
+const handleCheckout = () => {
+  emit("close");
+  store.emptyCart();
+  //success
+  toast.success("Checkout success!", {
+    position: POSITION.BOTTOM_RIGHT,
+  });
+};
 </script>
 
 <style scoped></style>

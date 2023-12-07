@@ -173,6 +173,7 @@
 
 <script setup>
 import { useProductStore } from "@/stores/product";
+import { useToast, POSITION } from "vue-toastification";
 
 const isMobileMenuOpen = ref(false);
 
@@ -185,6 +186,7 @@ const closeMobileMenu = () => {
 };
 
 const store = useProductStore();
+const toast = useToast();
 
 const productImages = ref([
   "/ecommerce/image-product-1.jpg",
@@ -229,15 +231,25 @@ const QtyDecrement = () => {
 
 const addToCart = (id) => {
   store.addToCart(id, quantity.value);
-  console.log(store.cart);
+  //success
+  toast.success("1 Item added to cart!", {
+    position: POSITION.BOTTOM_RIGHT,
+  });
+  quantity.value = 1;
 };
 
 watch(quantity, (newVal, oldVal) => {
   if (newVal < 1) {
     quantity.value = 1;
+    toast.warning("minimum 1 item required!", {
+      position: POSITION.BOTTOM_RIGHT,
+    });
   }
   if (newVal > 10) {
     quantity.value = 10;
+    toast.warning("maximum 10 item allowed!", {
+      position: POSITION.BOTTOM_RIGHT,
+    });
   }
 });
 </script>
