@@ -9,7 +9,7 @@
             <span> SHOPPING CART</span>
             <span
               class="px-2 py-1 bg-[#ff7d1a] inline-grid place-items-center text-xs text-white rounded-full"
-              >2</span
+              >{{ store.cart.length }}</span
             >
           </p>
           <Icon
@@ -31,19 +31,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="w-full">
+              <tr v-for="(item, i) in store.cart" :key="i" class="w-full">
                 <td class="py-2 px-4 border text-left">
-                  <img
-                    src="/ecommerce/image-product-1.jpg"
-                    alt=""
-                    class="h-[100px] w-[120px]"
-                  />
+                  <img :src="item.img" alt="" class="h-[100px] w-[120px]" />
                 </td>
                 <td class="py-2 px-4 border text-center">
-                  <p>1</p>
+                  <p>{{ item.quantity }}</p>
                 </td>
                 <td class="py-2 px-4 border text-right">
-                  <p>$125</p>
+                  <p>{{ item.price }}</p>
                 </td>
               </tr>
             </tbody>
@@ -52,7 +48,7 @@
         <div class="border-t py-6 rounded-md">
           <div class="flex items-center justify-between py-4">
             <p class="capitalize">subtotal:</p>
-            <p>$1445</p>
+            <p>{{ item.price }}</p>
           </div>
           <button
             class="py-2.5 px-8 w-full rounded-md bg-[#ff7d1a] text-white uppercase font-semibold tracking-wide hover:bg-opacity-70 hover:shadow-md hover:cursor-pointer"
@@ -67,6 +63,9 @@
 </template>
 
 <script setup>
+import { useProductStore } from "@/stores/product";
+const store = useProductStore();
+
 defineEmits(["close"]);
 </script>
 

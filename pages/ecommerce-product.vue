@@ -42,8 +42,9 @@
               size="32px"
             />
             <span
+              v-if="store.cart.length > 0"
               class="absolute -top-[30%] left-[60%] p-1 min-w-[24px] bg-[#ff7d1a] grid place-items-center text-xs text-white rounded-full"
-              >2</span
+              >{{ store.cart.length }}</span
             >
           </div>
           <div
@@ -138,17 +139,22 @@
               <Icon
                 name="mdi:minus"
                 size="24px"
-                class="w-10 hover:cursor-pointer hover:scale-125"
+                class="w-10 hover:cursor-pointer"
+                @click="QtyDecrement"
               />
-              <p class="text-black py-2.5 px-2 font-bold">000</p>
+              <p class="text-black py-2.5 px-2 font-bold min-w-[40px]">
+                {{ quantity }}
+              </p>
               <Icon
                 name="mdi:add"
                 size="24px"
-                class="w-10 hover:cursor-pointer hover:scale-125"
+                class="w-10 hover:cursor-pointer"
+                @click="QtyIncrement"
               />
             </div>
             <button
               class="px-8 py-2.5 bg-[#ff7d1a] text-white rounded-md hover:shadow-lg hover:bg-opacity-70"
+              @click="addToCart(12345)"
             >
               Add to cart
             </button>
@@ -166,6 +172,8 @@
 </template>
 
 <script setup>
+import { useProductStore } from "@/stores/product";
+
 const isMobileMenuOpen = ref(false);
 
 const toggleMobileMenu = () => {
@@ -176,6 +184,8 @@ const closeMobileMenu = () => {
   isMobileMenuOpen.value = false;
 };
 
+const store = useProductStore();
+
 const productImages = ref([
   "/ecommerce/image-product-1.jpg",
   "/ecommerce/image-product-2.jpg",
@@ -184,6 +194,7 @@ const productImages = ref([
 ]);
 const isLightBox = ref(false);
 const isCartOpen = ref(false);
+const quantity = ref(1);
 
 const openLightBox = () => {
   isLightBox.value = true;
@@ -207,6 +218,28 @@ const showCart = () => {
 const hideCart = () => {
   isCartOpen.value = false;
 };
+
+const QtyIncrement = () => {
+  quantity.value += 1;
+};
+
+const QtyDecrement = () => {
+  quantity.value -= 1;
+};
+
+const addToCart = (id) => {
+  store.addToCart(id, quantity.value);
+  console.log(store.cart);
+};
+
+watch(quantity, (newVal, oldVal) => {
+  if (newVal < 1) {
+    quantity.value = 1;
+  }
+  if (newVal > 10) {
+    quantity.value = 10;
+  }
+});
 </script>
 
 <style scoped>
