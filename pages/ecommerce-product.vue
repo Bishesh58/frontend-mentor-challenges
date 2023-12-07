@@ -33,7 +33,10 @@
           </ul>
         </div>
         <div class="flex items-center gap-6">
-          <div class="relative hover:cursor-pointer">
+          <div
+            class="relative hover:cursor-pointer hover:text-black"
+            @click="showCart"
+          >
             <Icon
               name="material-symbols:shopping-cart-outline-rounded"
               size="32px"
@@ -43,7 +46,9 @@
               >2</span
             >
           </div>
-          <div class="h-10 w-10 rounded-full hover:cursor-pointer">
+          <div
+            class="h-10 w-10 rounded-full hover:cursor-pointer hover:border hover:border-red-500"
+          >
             <img src="/img/user/rizky.webp" alt="" />
           </div>
         </div>
@@ -157,12 +162,10 @@
     :isLightBox="isLightBox"
     @close="closeLightBox"
   />
-  <Cart />
+  <Cart v-if="isCartOpen" @close="hideCart" />
 </template>
 
 <script setup>
-import { toastInjectionKey } from "vue-toastification";
-
 const isMobileMenuOpen = ref(false);
 
 const toggleMobileMenu = () => {
@@ -180,6 +183,7 @@ const productImages = ref([
   "/ecommerce/image-product-4.jpg",
 ]);
 const isLightBox = ref(false);
+const isCartOpen = ref(false);
 
 const openLightBox = () => {
   isLightBox.value = true;
@@ -194,6 +198,14 @@ const thumbsSwiper = ref(null);
 
 const setThumbsSwiper = (swiper) => {
   thumbsSwiper.value = swiper;
+};
+
+const showCart = () => {
+  isCartOpen.value = true;
+};
+
+const hideCart = () => {
+  isCartOpen.value = false;
 };
 </script>
 

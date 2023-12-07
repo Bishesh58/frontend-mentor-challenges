@@ -16,6 +16,7 @@
             name="ion:close"
             size="24px"
             class="hover:rotate-90 hover:text-[#ff7d1a] hover:cursor-pointer transition-transform transform duration-200"
+            @click="$emit('close')"
           />
         </div>
         <div class="flex-grow p-4">
@@ -54,7 +55,8 @@
             <p>$1445</p>
           </div>
           <button
-            class="py-2.5 px-8 w-full bg-[#ff7d1a] text-white uppercase font-semibold tracking-wide hover:bg-opacity-70 hover:shadow-md hover:cursor-pointer"
+            class="py-2.5 px-8 w-full rounded-md bg-[#ff7d1a] text-white uppercase font-semibold tracking-wide hover:bg-opacity-70 hover:shadow-md hover:cursor-pointer"
+            @click="$emit('close')"
           >
             checkout
           </button>
@@ -64,6 +66,8 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+defineEmits(["close"]);
+</script>
 
 <style scoped></style>
