@@ -1,30 +1,35 @@
 <template>
   <div class="relative">
-    <div class="absolute z-0 inset-0 -ml-2 bg-red-400 rounded-xl"></div>
+    <div
+      v-if="job.new && job.featured"
+      class="absolute z-0 inset-0 -ml-2 bg-red-400 rounded-xl"
+    ></div>
     <div class="p-2 bg-white text-gray-900 rounded-md relative z-10">
-      <div class="h-20 w-20 rounded-full">
-        <img src="" alt="" />
+      <div class="h-40 w-40 rounded-full">
+        <img :src="job.logo" alt="" class="" />
       </div>
       <div>
         <div>
-          <p>company name</p>
-          <p>New!</p>
-          <p>Feautured</p>
+          <p>{{ job.company }}</p>
+          <p>{{ job.new }}</p>
+          <p>{{ job.featured }}</p>
         </div>
-        <h2>Job Title</h2>
+        <h2>{{ job.position }}</h2>
         <div>
-          <p>1d ago</p>
-          <p>Part Time</p>
-          <p>Remote</p>
+          <p>{{ job.postedAt }}</p>
+          <p>{{ job.contract }}</p>
+          <p>{{ job.location }}</p>
         </div>
       </div>
-      <div v-for="(item, index) in 4" :key="index">
-        <p>{{ item }}</p>
+      <div v-for="(lang, index) in job.languages" :key="index">
+        <p>{{ lang }}</p>
       </div>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+defineProps(["job"]);
+</script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
