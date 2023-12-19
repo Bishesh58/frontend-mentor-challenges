@@ -1,10 +1,18 @@
 <template>
-  <div class="h-40 bg-gray-600">
-    <img src="/job-listing/bg-header-desktop.svg" alt="" />
-  </div>
-  <div class="p-6 flex flex-col gap-12">
-    <div v-for="(job, index) in jobs" :key="index">
-      <JobCard :job="job" />
+  <div class="bg-[#e4f7f9]">
+    <div class="h-40 bg-teal-800 opacity-50">
+      <img
+        src="/job-listing/bg-header-desktop.svg"
+        alt=""
+        class="w-full h-full object-cover bg-center"
+      />
+    </div>
+    <div class="max-w-7xl mx-auto">
+      <div class="p-6 w-full flex flex-col gap-12">
+        <div v-for="(job, index) in jobs" :key="index">
+          <JobCard :job="job" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
