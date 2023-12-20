@@ -22,6 +22,11 @@
 <script setup>
 const data = [
   {
+    title: "Job listings with filtering",
+    imgURL: "/img/job-listing_preview.png",
+    link: "/job-listing",
+  },
+  {
     title: "E-commerce product page",
     imgURL: "/img/ecommerce-product_preview.png",
     link: "/ecommerce-product",

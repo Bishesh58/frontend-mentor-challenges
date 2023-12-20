@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#e4f7f9]">
+  <div class="bg-[#e4f7f9] min-h-screen">
     <div class="h-40 bg-teal-800 opacity-50">
       <img
         src="/job-listing/bg-header-desktop.svg"
@@ -7,9 +7,12 @@
         class="w-full h-full object-cover bg-center"
       />
     </div>
-    <div class="max-w-7xl mx-auto">
+    <div class="max-w-7xl mx-auto min-h-screen">
+      <div v-if="store.list.length > 0" class="-mt-16 p-6 min-h-[100px]">
+        <SearchList />
+      </div>
       <div class="p-6 w-full flex flex-col gap-12">
-        <div v-for="(job, index) in jobs" :key="index">
+        <div v-for="(job, index) in filteredList" :key="index">
           <JobCard :job="job" />
         </div>
       </div>
@@ -18,6 +21,9 @@
 </template>
 
 <script setup>
+import { useSearchListStore } from "../stores/searchList";
+
+const store = useSearchListStore();
 const jobs = ref([
   {
     id: 1,
@@ -46,7 +52,7 @@ const jobs = ref([
     postedAt: "1d ago",
     contract: "Part Time",
     location: "Remote",
-    languages: ["Python"],
+    languages: ["JavaScript"],
     tools: ["React"],
   },
   {
@@ -170,6 +176,22 @@ const jobs = ref([
     tools: ["React", "Sass"],
   },
 ]);
+
+const filteredList = computed(() => {
+  // If store.list is empty, return all jobs
+  if (store.list.length === 0) {
+    return jobs.value;
+  }
+
+  return jobs.value.filter((job) => {
+    // Check if every value in store.list is present in at least one key of job object
+    return store.list.every((value) =>
+      ["role", "level", "languages", "tools"].some(
+        (key) => job[key] && job[key].includes(value)
+      )
+    );
+  });
+});
 </script>
 
 <style scoped></style>
